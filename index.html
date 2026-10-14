@@ -21,14 +21,21 @@
       <h1 id="start-titel">Is it vegan?</h1>
       <h2>Entdecke, ob Produkte vegan sind</h2>
       <p>Scanne einfach deinen Barcode ein oder gib die EAN an, um zu erfahren, ob ein Produkt vegan ist.</p>
+      <p>Alternativ kannst du auch ein Foto des Barcodes machen und hochladen.</p>
 
-      <!-- Ab Termin 2: euer Formular
       <form>
-        <label for="suche">Suche</label>
-        <input id="suche" name="suche" type="text" required minlength="3">
+        <label for="suche">EAN</label>
+        <input id="suche" name="ean" type="text" inputmode="numeric" pattern="[0-9]{8,14}" minlength="8" maxlength="14" placeholder="z. B. 3017620422003">
+
+        <label for="produktname">Produktname</label>
+        <input id="produktname" name="produktname" type="search" placeholder="z. B. Hafermilch" required>
+
+        <label for="barcodebild">Barcode-Foto</label>
+        <input id="barcodebild" name="barcodebild" type="file" accept="image/*" capture="environment">
+
         <button type="submit">Los</button>
       </form>
-      -->
+
 
       <!-- Ab Termin 6: hier landen die Daten
       <p id="status" role="status"></p>
