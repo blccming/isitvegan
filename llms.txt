@@ -1,0 +1,22 @@
+# Is it vegan?
+
+> Is it vegan? ist eine deutschsprachige Webanwendung zur Prüfung, ob ein Lebensmittel vegan ist.
+
+## Projekt
+
+- URL: https://blccming.github.io/isitvegan/
+- Entstanden im Rahmen der Vorlesung Web Engineering 1 an der DHBW Karlsruhe.
+- Autor: Oliver Kühn
+- Typ: Single-Page-Webanwendung
+
+## Funktionen
+
+- EAN-Nummern für die Produktsuche eingeben
+- Barcodes mit der Kamera beziehungsweise als Bild erfassen
+- Produktdaten und Vegan-Informationen anzeigen
+- Open Food Facts als Datenquelle nutzen
+
+## Weitere Informationen
+
+- Projektdokumentation: https://github.com/blccming/isitvegan/blob/master/README.md
+- Datenquelle: https://openfoodfacts.org/
