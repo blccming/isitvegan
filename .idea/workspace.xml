@@ -7,9 +7,7 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="modified styling, header now sticky, new colors">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="extended styling, added to readme">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
@@ -102,7 +100,7 @@
       <workItem from="1791294003814" duration="99000" />
       <workItem from="1791897683139" duration="1128000" />
       <workItem from="1792001301575" duration="294000" />
-      <workItem from="1792001604403" duration="5129000" />
+      <workItem from="1792001604403" duration="5435000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -176,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792006933232</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="extended styling, added to readme">
+      <option name="closed" value="true" />
+      <created>1792007980767</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1792007980767</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +198,7 @@
     <MESSAGE value="json-ld fix für rich results test" />
     <MESSAGE value="modified readme" />
     <MESSAGE value="modified styling, header now sticky, new colors" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified styling, header now sticky, new colors" />
+    <MESSAGE value="extended styling, added to readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="extended styling, added to readme" />
   </component>
 </project>
