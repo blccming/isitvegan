@@ -2,8 +2,10 @@
 
 Eine App, die dir hilft, herauszufinden, ob ein Produkt vegan ist. Scanne einfach den Barcode und die App zeigt dir an, ob das Produkt für deine Ernährungsform geeignet ist.
 
-**Live:** N/A
+**Live:** [blccming.github.io/isitvegan/](https://blccming.github.io/isitvegan/)
 **Team:** Oliver Kühn
+
+Die Website ist als Single-Page aufgebaut. Die Navigation springt über Anker direkt zu den Bereichen `#start` und `#ueber`.
 
 ## Was die App kann
 
@@ -20,7 +22,7 @@ Prompt: "Generiere mir 5 Projektideen für eine Webapp, die den Alltag erleichte
 | SmartPlaner für den Haushalt                  | Einkaufslisten, Putzpläne, Mülltermine und wiederkehrende Aufgaben zentral verwalten.             | Besser durch bestehende Kalenderapp bzw. TODOs-App lösbar; für mich kein Mehrwehrt                                                                                                      |
 | Alltags- und Terminassistent                  | Termine und Erledigungen priorisieren und daraus eine passende Tagesplanung erstellen.            | Ebenfalls durch bestehende Kalender- bzw. TODOs-App lösbar bzw. sind diese besser geeignet                                                                                              |
 | Meal- und Einkaufsplaner                      | Gerichte nach Budget, Ernährungsform und vorhandenen Zutaten planen und Einkaufslisten erstellen. | Coole Idee, aber besser als native Smartphoneapp machbar                                                                                                                                |
-| Gemeinschaftsorganisator für WGs und Familien | Gemeinsame Ausgaben, Aufgaben, Termine und Abstimmungen organisieren.                             | Würde Accountsystem benötigen, das ich im Rahmen des Projekts nicht implementieren möchte. Alternativ: externe Authentifikation; ich möchte aber ebenfalls nicht für diese Projekt tun. |
+| Gemeinschaftsorganisator für WGs und Familien | Gemeinsame Ausgaben, Aufgaben, Termine und Abstimmungen organisieren.                             | Würde Accountsystem benötigen, das ich im Rahmen des Projekts nicht implementieren möchte. Alternativ: externe Authentifikation; möchte ich aber ebenfalls nicht für diese Projekt tun. |
 | Lokal-Helfer für den Alltag                   | Relevante lokale Informationen wie Öffnungszeiten, Abholtermine und Verkehr gebündelt anzeigen.   | Bereits bestehende Lösungen wie Google Maps, die das Problem hinreichend lösen.                                                                                                         |
 
 Ich habe mich schließlich vom Meal- und Einkaufsplaner inspirieren lassen. 

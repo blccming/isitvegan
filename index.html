@@ -3,35 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projektname – kurze Beschreibung</title>
-  <meta name="description" content="Ein Satz, der erklärt, was diese Seite kann.">
+  <title>Is it vegan?</title>
+  <meta name="description" content="Prüfe mit Is it vegan?, ob ein Produkt vegan ist.">
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
 <body>
   <header>
     <nav aria-label="Hauptmenü">
-      <a href="index.html">Start</a>
-      <a href="ueber.html">Über</a>
+      <a href="#start">Start</a>
+      <a href="#ueber">Über</a>
     </nav>
   </header>
 
   <main>
-    <h1>Projektname</h1>
-    <p>Ein Satz dazu, was hier passiert.</p>
+    <section id="start" aria-labelledby="start-titel">
+      <h1 id="start-titel">Is it vegan?</h1>
+      <h2>Entdecke, ob Produkte vegan sind</h2>
+      <p>Scanne einfach deinen Barcode ein oder gib die EAN an, um zu erfahren, ob ein Produkt vegan ist.</p>
 
-    <!-- Ab Termin 2: euer Formular
-    <form>
-      <label for="suche">Suche</label>
-      <input id="suche" name="suche" type="text" required minlength="3">
-      <button type="submit">Los</button>
-    </form>
-    -->
+      <!-- Ab Termin 2: euer Formular
+      <form>
+        <label for="suche">Suche</label>
+        <input id="suche" name="suche" type="text" required minlength="3">
+        <button type="submit">Los</button>
+      </form>
+      -->
 
-    <!-- Ab Termin 6: hier landen die Daten
-    <p id="status" role="status"></p>
-    <ul id="ergebnisse"></ul>
-    -->
+      <!-- Ab Termin 6: hier landen die Daten
+      <p id="status" role="status"></p>
+      <ul id="ergebnisse"></ul>
+      -->
+    </section>
+
+    <section id="ueber" aria-labelledby="ueber-titel">
+      <h2 id="ueber-titel">Über dieses Projekt</h2>
+      <p>Dieses Projekt ist im Rahmen der Vorlesung Web Engineering 1 an der DHBW Karlsruhe entstanden.</p>
+      <p>Als Datenquelle nutzt die Anwendung <a href="https://openfoodfacts.org/" target="_blank" rel="noopener noreferrer">Open Food Facts</a>.</p>
+    </section>
   </main>
 
   <footer>

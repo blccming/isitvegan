@@ -34,6 +34,14 @@ nav {
 
 a { color: var(--akzent); }
 
+section {
+  scroll-margin-top: var(--abstand);
+}
+
+section + section {
+  margin-top: 3rem;
+}
+
 footer {
   padding: var(--abstand);
   font-size: .875rem;
