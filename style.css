@@ -12,10 +12,26 @@
   --abstand: 1.2rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171923;
+    --text: #f1f3f5;
+    --akzent: #8ea2ff;
+    --akzent2: #10143d;
+    --flaeche: #252a3b;
+    --weiss: #ffffff;
+    --rahmen: #4a5270;
+    --text-footer: #c4c8d4;
+  }
+}
+
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   font-family: system-ui, "Segoe UI", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
@@ -24,6 +40,7 @@ body {
 }
 
 main {
+  flex: 1;
   max-width: 65ch;
   margin-inline: auto;
   padding: var(--abstand);
@@ -67,11 +84,24 @@ nav a:focus-visible {
 }
 
 section {
+  position: relative;
   padding: calc(var(--abstand) * 1.5);
   border: 1px solid var(--rahmen);
   border-radius: var(--radius);
   background: var(--flaeche);
   scroll-margin-top: var(--abstand);
+}
+
+.karten-badge {
+  position: absolute;
+  top: var(--abstand);
+  right: var(--abstand);
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  color: var(--weiss);
+  background: var(--akzent2);
+  font-size: .75rem;
+  font-weight: 700;
 }
 
 section + section {
@@ -84,8 +114,58 @@ form {
   margin-top: var(--abstand);
 }
 
+form input,
+form button {
+  min-height: 2.75rem;
+  padding: .65rem .8rem;
+  border: 1px solid var(--rahmen);
+  border-radius: .5rem;
+  font: inherit;
+}
+
+form input {
+  color: var(--text);
+  background: var(--bg);
+}
+
+form input:focus-visible,
+form button:focus-visible {
+  outline: 3px solid var(--akzent);
+  outline-offset: 2px;
+}
+
+form input[type="file"] {
+  padding: .35rem;
+}
+
+form input[type="file"]::file-selector-button {
+  margin-right: .65rem;
+  padding: .45rem .7rem;
+  border: 0;
+  border-radius: .4rem;
+  color: var(--weiss);
+  background: var(--akzent2);
+  font: inherit;
+  cursor: pointer;
+}
+
+form input[type="file"]::file-selector-button:hover {
+  background: color-mix(in srgb, var(--akzent2) 80%, var(--weiss));
+}
+
+form button {
+  color: var(--weiss);
+  background: var(--akzent2);
+  cursor: pointer;
+}
+
+form button:hover {
+  background: color-mix(in srgb, var(--akzent2) 80%, var(--weiss));
+}
+
 footer {
   padding: var(--abstand);
   font-size: .875rem;
   color: var(--text-footer);
+  text-align: center;
 }

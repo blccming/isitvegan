@@ -47,6 +47,13 @@ npx serve .
 
 Womit gebaut und warum. Eine Zeile pro Entscheidung reicht, aber es soll eine Entscheidung sein, keine Aufzählung von Buzzwords.
 
+## CSS-Kollisionen
+Am Beispiel: 
+```html
+      <h1 id="start-titel">Is it vegan?</h1>
+```
+`font-size` ist laut body 1rem. Da das Element aber zu h1 gehört (und h1 spezifischer als body ist), wird es von der h1-Definition überschrieben und ist somit 2em groß.
+
 ## Rich Results Test / JSON-LD
 
 Der JSON-LD-Block im `<head>` wurde mit dem Google Rich Results Test geprüft:
