@@ -9,9 +9,11 @@ Die Website ist als Single-Page aufgebaut. Die Navigation springt über Anker di
 
 ## Was die App kann
 
-- Funktion 1
-- Funktion 2
-- Funktion 3
+- Produkte über einen Barcode mit der Kamera scannen.
+- Eine EAN-Nummer manuell eingeben und suchen.
+- Produktdaten über die Open-Food-Facts-API abrufen.
+- Anzeigen, ob ein Produkt vegan ist, und die dazugehörigen Produktinformationen darstellen.
+- Eine verständliche Rückmeldung anzeigen, wenn ein Produkt nicht gefunden werden kann.
 
 ## Alternative Appideen
 Zu Übungsblatt 1, Bonusaufgabe B: Ich ließ durch KI 5 Appideen generieren. 
@@ -49,9 +51,11 @@ Womit gebaut und warum. Eine Zeile pro Entscheidung reicht, aber es soll eine En
 
 Ehrlich ausfüllen, das zählt zur Bewertung.
 
-| Werkzeug | Wofür benutzt                  |
-|----------|--------------------------------|
-| Copilot  | - Generierung von Projektideen |
+| Werkzeug | Wofür benutzt |
+|----------|----------------|
+| Copilot  | Generierung und Bewertung von fünf Ideen für eine Webapp im Rahmen von Übungsblatt 1, Bonusaufgabe B. |
+| Copilot  | Unterstützung bei der Umstellung von einer separaten `ueber.html` auf eine Single-Page mit Ankern. |
+| Copilot  | Unterstützung bei kurzen Texten für die Meta-Description und die Projektbeschreibung. |
 
 **Ein Fall, in dem KI geholfen hat:** Was habt ihr gefragt, was kam zurück, was habt ihr geändert?
 
