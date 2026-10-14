@@ -47,6 +47,12 @@ npx serve .
 
 Womit gebaut und warum. Eine Zeile pro Entscheidung reicht, aber es soll eine Entscheidung sein, keine Aufzählung von Buzzwords.
 
+## Rich Results Test / JSON-LD
+
+Der JSON-LD-Block im `<head>` wurde mit dem Google Rich Results Test geprüft:
+
+![Ergebnis des Google Rich Results Tests für den JSON-LD-Block](richresultstest.png)
+
 ## KI-Log
 
 Ehrlich ausfüllen, das zählt zur Bewertung.
@@ -56,6 +62,9 @@ Ehrlich ausfüllen, das zählt zur Bewertung.
 | Copilot  | Generierung und Bewertung von fünf Ideen für eine Webapp im Rahmen von Übungsblatt 1, Bonusaufgabe B. |
 | Copilot  | Unterstützung bei der Umstellung von einer separaten `ueber.html` auf eine Single-Page mit Ankern. |
 | Copilot  | Unterstützung bei kurzen Texten für die Meta-Description und die Projektbeschreibung. |
+| Copilot  | Unterstützung bei der Planung und Validierung des EAN-Formulars, insbesondere bei der Behandlung der EAN als Text, damit führende Nullen erhalten bleiben. |
+| Copilot  | Erstellung und Prüfung von `robots.txt`, `sitemap.xml` und `llms.txt` für Suchmaschinen und KI-Systeme. |
+| Copilot  | Erstellung des JSON-LD-Blocks nach Schema.org und Ergänzung der Angaben zu Beschreibung, Lizenz und Creator. |
 
 **Ein Fall, in dem KI geholfen hat:** Was habt ihr gefragt, was kam zurück, was habt ihr geändert?
 
