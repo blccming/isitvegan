@@ -57,16 +57,24 @@
       <p>Alternativ kannst du auch ein Foto des Barcodes machen und hochladen.</p>
 
       <form>
-        <label for="suche">EAN</label>
-        <input id="suche" name="ean" type="text" inputmode="numeric" pattern="[0-9]{8,14}" minlength="8" maxlength="14" placeholder="z. B. 3017620422003">
+        <div class="formular-feld">
+          <label for="suche">EAN</label>
+          <input id="suche" name="ean" type="text" inputmode="numeric" pattern="[0-9]{8,14}" minlength="8" maxlength="14" placeholder="z. B. 3017620422003">
+        </div>
 
-        <label for="produktname">Produktname</label>
-        <input id="produktname" name="produktname" type="search" placeholder="z. B. Hafermilch" required>
+        <div class="formular-feld">
+          <label for="produktname">Produktname</label>
+          <input id="produktname" name="produktname" type="search" placeholder="z. B. Hafermilch" required>
+        </div>
 
-        <label for="barcodebild">Barcode-Foto</label>
-        <input id="barcodebild" name="barcodebild" type="file" accept="image/*" capture="environment">
+        <div class="formular-feld formular-feld--wide">
+          <label for="barcodebild">Barcode-Foto</label>
+          <input id="barcodebild" name="barcodebild" type="file" accept="image/*" capture="environment">
+        </div>
 
-        <button type="submit">Los</button>
+        <div class="formular-aktionen">
+          <button type="submit">Los</button>
+        </div>
       </form>
 
 

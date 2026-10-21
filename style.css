@@ -42,9 +42,11 @@ body {
 
 main {
   flex: 1;
-  max-width: 65ch;
+  width: min(100%, 72rem);
   margin-inline: auto;
   padding: var(--abstand);
+  display: grid;
+  gap: var(--abstand);
 }
 
 header {
@@ -57,12 +59,16 @@ nav {
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 100%;
   flex-wrap: wrap;
-  gap: var(--abstand);
-  padding: var(--abstand);
+  gap: .5rem 1rem;
+  padding: .8rem var(--abstand);
   color: var(--weiss);
   background: var(--akzent2);
+}
+
+nav span {
+  margin-right: auto;
+  font-weight: 700;
 }
 
 a { color: var(--akzent); }
@@ -109,13 +115,22 @@ section {
 }
 
 section + section {
-  margin-top: 3rem;
+  margin-top: 0;
 }
 
 form {
   display: grid;
-  gap: .75rem;
+  gap: 1rem;
   margin-top: var(--abstand);
+}
+
+.formular-feld {
+  display: grid;
+  gap: .35rem;
+}
+
+form label {
+  font-weight: 600;
 }
 
 form input,
@@ -169,9 +184,36 @@ form button:hover {
   background: color-mix(in srgb, var(--akzent2) 80%, var(--weiss));
 }
 
+.formular-aktionen {
+  display: flex;
+  align-items: end;
+}
+
 footer {
   padding: var(--abstand);
   font-size: .875rem;
   color: var(--text-footer);
   text-align: center;
+}
+
+@media (min-width: 48rem) {
+  main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: calc(var(--abstand) * 1.5);
+    padding-block: 2rem;
+  }
+
+  section + section {
+    margin-top: 0;
+  }
+
+  form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .formular-feld--wide,
+  .formular-aktionen {
+    grid-column: 1 / -1;
+  }
 }
