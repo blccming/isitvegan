@@ -1,5 +1,6 @@
 /* Alles an einer Stelle einstellbar – ab Termin 3 füllt ihr das hier aus. */
 :root {
+  color-scheme: light dark;
   --bg: #ffffff;
   --text: #1f1f1f;
   --akzent: #0000ff;
@@ -93,13 +94,23 @@ nav a:focus-visible {
   outline-offset: 3px;
 }
 
-section {
+.eigene-karte {
   position: relative;
   padding: calc(var(--abstand) * 1.5);
   border: 1px solid var(--rahmen);
   border-radius: var(--radius);
   background: var(--flaeche);
   scroll-margin-top: var(--abstand);
+}
+
+.eigene-karte h2 {
+  margin-block: .83em;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.eigene-karte p {
+  margin-block: 1em;
 }
 
 .karten-badge {

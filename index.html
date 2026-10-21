@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,12 +50,13 @@
   </header>
 
   <main>
-    <section id="start" aria-labelledby="start-titel">
-      <span class="karten-badge">Produkt-Check</span>
-      <h1 id="start-titel">Is it vegan?</h1>
-      <h2>Entdecke, ob Produkte vegan sind</h2>
-      <p>Scanne einfach deinen Barcode ein oder gib die EAN an, um zu erfahren, ob ein Produkt vegan ist.</p>
-      <p>Alternativ kannst du auch ein Foto des Barcodes machen und hochladen.</p>
+    <section id="start" aria-labelledby="start-titel"
+      class="relative scroll-mt-5 rounded-xl border border-[var(--rahmen)] bg-[var(--flaeche)] p-7">
+      <span class="absolute right-5 top-5 rounded-full bg-[var(--akzent2)] px-2 py-1 text-xs font-bold text-[var(--weiss)]">Produkt-Check</span>
+      <h1 id="start-titel" class="my-2 text-3xl font-bold">Is it vegan?</h1>
+      <h2 class="my-3 text-2xl font-bold">Entdecke, ob Produkte vegan sind</h2>
+      <p class="my-4">Scanne einfach deinen Barcode ein oder gib die EAN an, um zu erfahren, ob ein Produkt vegan ist.</p>
+      <p class="my-4">Alternativ kannst du auch ein Foto des Barcodes machen und hochladen.</p>
 
       <form>
         <div class="formular-feld">
@@ -84,7 +86,7 @@
       -->
     </section>
 
-    <section id="ueber" aria-labelledby="ueber-titel">
+    <section id="ueber" class="eigene-karte" aria-labelledby="ueber-titel">
       <h2 id="ueber-titel">Über dieses Projekt</h2>
       <p>Dieses Projekt ist im Rahmen der Vorlesung Web Engineering 1 an der DHBW Karlsruhe entstanden.</p>
       <p>Als Datenquelle nutzt die Anwendung <a href="https://openfoodfacts.org/" target="_blank" rel="noopener noreferrer">Open Food Facts</a>.</p>
