@@ -1,14 +1,16 @@
 /* Alles an einer Stelle einstellbar – ab Termin 3 füllt ihr das hier aus. */
 :root {
   color-scheme: light dark;
-  --bg: #ffffff;
-  --text: #1f1f1f;
-  --akzent: #0000ff;
-  --akzent2: #252a68;
-  --flaeche: #eef0fb;
+  --bg: #f5f7ef;
+  --text: #1c2416;
+  --akzent: #4d7027;
+  --akzent2: #638044;
+  --akzent-warm: #c46b2c;
+  --akzent-warm-dunkel: #9f4f1e;
+  --flaeche: #eaf1df;
   --weiss: #ffffff;
-  --rahmen: #d8dcf0;
-  --text-footer: #555555;
+  --rahmen: #b7c99b;
+  --text-footer: #53604b;
   --schrift: "Quicksand", "Trebuchet MS", "Segoe UI", sans-serif;
   --radius: 12px;
   --abstand: 1.2rem;
@@ -16,14 +18,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #171923;
-    --text: #f1f3f5;
-    --akzent: #8ea2ff;
-    --akzent2: #10143d;
-    --flaeche: #252a3b;
+    --bg: #10170e;
+    --text: #edf3e7;
+    --akzent: #b4d276;
+    --akzent2: #1c321b;
+    --akzent-warm: #e39a55;
+    --akzent-warm-dunkel: #b96832;
+    --flaeche: #1d2b1b;
     --weiss: #ffffff;
-    --rahmen: #4a5270;
-    --text-footer: #c4c8d4;
+    --rahmen: #496345;
+    --text-footer: #b9c9af;
   }
 }
 
@@ -65,14 +69,37 @@ nav {
   padding: .8rem var(--abstand);
   color: var(--weiss);
   background: var(--akzent2);
+  border-bottom: 3px solid transparent;
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
 
-nav span {
+header.ist-gescrollt nav {
+  border-bottom-color: var(--akzent-warm);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--bg) 55%, transparent);
+}
+
+nav > span {
   margin-right: auto;
   font-weight: 700;
 }
 
+.marke {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+}
+
+.marken-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: currentColor;
+}
+
 a { color: var(--akzent); }
+
+a[href]:not(nav a) {
+  color: var(--akzent-warm);
+}
 
 nav a {
   color: var(--weiss);
@@ -176,23 +203,23 @@ form input[type="file"]::file-selector-button {
   border: 0;
   border-radius: .4rem;
   color: var(--weiss);
-  background: var(--akzent2);
+  background: var(--akzent-warm-dunkel);
   font: inherit;
   cursor: pointer;
 }
 
 form input[type="file"]::file-selector-button:hover {
-  background: color-mix(in srgb, var(--akzent2) 80%, var(--weiss));
+  background: color-mix(in srgb, var(--akzent-warm-dunkel) 80%, var(--weiss));
 }
 
 form button {
   color: var(--weiss);
-  background: var(--akzent2);
+  background: var(--akzent-warm-dunkel);
   cursor: pointer;
 }
 
 form button:hover {
-  background: color-mix(in srgb, var(--akzent2) 80%, var(--weiss));
+  background: color-mix(in srgb, var(--akzent-warm-dunkel) 80%, var(--weiss));
 }
 
 .formular-aktionen {
@@ -205,6 +232,12 @@ footer {
   font-size: .875rem;
   color: var(--text-footer);
   text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav {
+    transition: none;
+  }
 }
 
 @media (min-width: 48rem) {

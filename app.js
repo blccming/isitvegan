@@ -4,4 +4,12 @@
 const jahr = document.querySelector("#jahr");
 if (jahr) jahr.textContent = new Date().getFullYear();
 
+const kopfzeile = document.querySelector("header");
+const aktualisiereNavigation = () => {
+  kopfzeile?.classList.toggle("ist-gescrollt", window.scrollY > 8);
+};
+
+aktualisiereNavigation();
+window.addEventListener("scroll", aktualisiereNavigation, { passive: true });
+
 console.log("app.js läuft");

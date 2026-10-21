@@ -7,8 +7,8 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="Flex und Grid hinzugefügt">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="Tailwind eingebunden und einige Komponenten umgestellt">
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
@@ -103,7 +103,7 @@
       <workItem from="1792001301575" duration="294000" />
       <workItem from="1792001604403" duration="5507000" />
       <workItem from="1792503768255" duration="25000" />
-      <workItem from="1792602286127" duration="1008000" />
+      <workItem from="1792602286127" duration="1344000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -201,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792602713234</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Tailwind eingebunden und einige Komponenten umgestellt">
+      <option name="closed" value="true" />
+      <created>1792603312081</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1792603312081</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +228,7 @@
     <MESSAGE value="extended styling, added to readme" />
     <MESSAGE value="fixed header not being full width when using smaller screen sizes; changed font" />
     <MESSAGE value="Flex und Grid hinzugefügt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flex und Grid hinzugefügt" />
+    <MESSAGE value="Tailwind eingebunden und einige Komponenten umgestellt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tailwind eingebunden und einige Komponenten umgestellt" />
   </component>
 </project>
