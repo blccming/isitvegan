@@ -1,5 +1,0 @@
-- Requirements aufschreiben
-  - u.A. Accessibility
-- Sitemap erstellen
-- robots.txt erstellen
-- CI: Lighthouse-Tests, Accessibility-Tests

@@ -47,6 +47,14 @@ npx serve .
 
 Womit gebaut und warum. Eine Zeile pro Entscheidung reicht, aber es soll eine Entscheidung sein, keine Aufzählung von Buzzwords.
 
+## Wiederverwendete Komponenten
+
+Die drei wiederverwendbaren Tailwind-Komponenten sind in `style.css` innerhalb von `@layer components` definiert:
+
+- **`.component-card`:** Produkt-Check-Karte in `#start`.
+- **`.button`:** Absende-Button „Los“ im Produktformular.
+- **`.produkt-badge`:** „Produkt-Check“-Badge auf der Produktkarte.
+
 ## CSS-Kollisionen
 Am Beispiel: 
 ```html
