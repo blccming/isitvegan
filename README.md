@@ -47,6 +47,13 @@ npx serve .
 
 Womit gebaut und warum. Eine Zeile pro Entscheidung reicht, aber es soll eine Entscheidung sein, keine Aufzählung von Buzzwords.
 
+## Produktions-Build
+
+Der Vite-Build erzeugt unter `dist/assets/` die CSS-Datei `index-BWa8LM3T.css`. Sie ist aktuell 10,4 KiB groß.
+
+Die Datei bleibt trotz der vielen Tailwind-Klassen klein, weil Tailwind im Produktions-Build nur die Klassen aus dem Projekt übernimmt,
+die tatsächlich im HTML und in den Styles verwendet werden. Nicht verwendete Klassen werden nicht übernommen. Zudem wird die Datei komprimiert (Entfernen von Leerzeichen etc.).
+
 ## Wiederverwendete Komponenten
 
 Die drei wiederverwendbaren Tailwind-Komponenten sind in `style.css` innerhalb von `@layer components` definiert:
@@ -80,6 +87,8 @@ Ehrlich ausfüllen, das zählt zur Bewertung.
 | Copilot  | Unterstützung bei der Planung und Validierung des EAN-Formulars, insbesondere bei der Behandlung der EAN als Text, damit führende Nullen erhalten bleiben. |
 | Copilot  | Erstellung und Prüfung von `robots.txt`, `sitemap.xml` und `llms.txt` für Suchmaschinen und KI-Systeme. |
 | Copilot  | Erstellung des JSON-LD-Blocks nach Schema.org und Ergänzung der Angaben zu Beschreibung, Lizenz und Creator. |
+| Copilot  | Unterstützung bei der responsiven Umsetzung mit Flexbox, Grid und Tailwind. |
+| Copilot  | Unterstützung bei der Vite- und Tailwind-Toolchain sowie der README-Dokumentation. |
 
 **Ein Fall, in dem KI geholfen hat:** Was habt ihr gefragt, was kam zurück, was habt ihr geändert?
 
