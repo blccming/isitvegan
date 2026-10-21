@@ -5,8 +5,8 @@
   --text: #1c2416;
   --akzent: #4d7027;
   --akzent2: #638044;
-  --akzent-warm: #c46b2c;
-  --akzent-warm-dunkel: #9f4f1e;
+  --akzent-warm: #e3a05d;
+  --akzent-warm-dunkel: #985326;
   --flaeche: #eaf1df;
   --weiss: #ffffff;
   --rahmen: #b7c99b;
@@ -22,8 +22,8 @@
     --text: #edf3e7;
     --akzent: #b4d276;
     --akzent2: #1c321b;
-    --akzent-warm: #e39a55;
-    --akzent-warm-dunkel: #b96832;
+    --akzent-warm: #e9a05d;
+    --akzent-warm-dunkel: #c8783e;
     --flaeche: #1d2b1b;
     --weiss: #ffffff;
     --rahmen: #496345;
@@ -92,7 +92,7 @@ nav > span {
 .marken-icon {
   width: 1.35rem;
   height: 1.35rem;
-  fill: currentColor;
+  color: var(--akzent-warm);
 }
 
 a { color: var(--akzent); }

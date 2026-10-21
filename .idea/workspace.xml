@@ -7,8 +7,7 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="Tailwind eingebunden und einige Komponenten umgestellt">
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="Farbschema geändert">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
@@ -103,7 +102,7 @@
       <workItem from="1792001301575" duration="294000" />
       <workItem from="1792001604403" duration="5507000" />
       <workItem from="1792503768255" duration="25000" />
-      <workItem from="1792602286127" duration="1344000" />
+      <workItem from="1792602286127" duration="1665000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -209,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792603312081</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Farbschema geändert">
+      <option name="closed" value="true" />
+      <created>1792603872968</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1792603872968</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,6 +236,7 @@
     <MESSAGE value="fixed header not being full width when using smaller screen sizes; changed font" />
     <MESSAGE value="Flex und Grid hinzugefügt" />
     <MESSAGE value="Tailwind eingebunden und einige Komponenten umgestellt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tailwind eingebunden und einige Komponenten umgestellt" />
+    <MESSAGE value="Farbschema geändert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Farbschema geändert" />
   </component>
 </project>
