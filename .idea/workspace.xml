@@ -7,9 +7,8 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="base name zu vite config hinzufügen und favicon hinzufügen">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="added deploy.yml">
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +107,7 @@
       <workItem from="1792602286127" duration="3114000" />
       <workItem from="1793091002121" duration="104000" />
       <workItem from="1793091151614" duration="1410000" />
-      <workItem from="1793100330025" duration="428000" />
+      <workItem from="1793100330025" duration="775000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -262,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793100639460</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added deploy.yml">
+      <option name="closed" value="true" />
+      <created>1793100788848</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1793100788848</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,6 +295,7 @@
     <MESSAGE value="KI-Log; Git-Tracking von package-lock.json und vite.config.js" />
     <MESSAGE value="Nutzen von @theme; Hinzufügen eines Favicons" />
     <MESSAGE value="base name zu vite config hinzufügen und favicon hinzufügen" />
-    <option name="LAST_COMMIT_MESSAGE" value="base name zu vite config hinzufügen und favicon hinzufügen" />
+    <MESSAGE value="added deploy.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="added deploy.yml" />
   </component>
 </project>
