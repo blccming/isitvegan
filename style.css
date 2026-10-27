@@ -1,38 +1,38 @@
 @import "tailwindcss";
 
 /* Alles an einer Stelle einstellbar – ab Termin 3 füllt ihr das hier aus. */
-:root {
-  color-scheme: light dark;
-  --bg: #f5f7ef;
-  --text: #1c2416;
-  --akzent: #4d7027;
-  --akzent2: #638044;
-  --akzent-warm: #e3a05d;
-  --akzent-warm-dunkel: #985326;
-  --flaeche: #eaf1df;
-  --weiss: #ffffff;
-  --rahmen: #b7c99b;
-  --text-footer: #53604b;
-  --schrift: "Quicksand", "Trebuchet MS", "Segoe UI", sans-serif;
-  --radius: 12px;
-  --karten-padding: 1.75rem;
-  --abstand: 1.2rem;
-  --button-radius: .5rem;
-  --button-padding: .65rem .8rem;
+@theme {
+  --color-bg: #f5f7ef;
+  --color-text: #1c2416;
+  --color-akzent: #4d7027;
+  --color-akzent2: #638044;
+  --color-akzent-warm: #e3a05d;
+  --color-akzent-warm-dunkel: #985326;
+  --color-flaeche: #eaf1df;
+  --color-weiss: #ffffff;
+  --color-rahmen: #b7c99b;
+  --color-text-footer: #53604b;
+  --font-schrift: "Quicksand", "Trebuchet MS", "Segoe UI", sans-serif;
+  --radius-card: 12px;
+  --spacing-karten-padding: 1.75rem;
+  --spacing-abstand: 1.2rem;
+  --radius-button: .5rem;
+  --spacing-button-padding-y: .65rem;
+  --spacing-button-padding-x: .8rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #10170e;
-    --text: #edf3e7;
-    --akzent: #b4d276;
-    --akzent2: #1c321b;
-    --akzent-warm: #e9a05d;
-    --akzent-warm-dunkel: #c8783e;
-    --flaeche: #1d2b1b;
-    --weiss: #ffffff;
-    --rahmen: #496345;
-    --text-footer: #b9c9af;
+    --color-bg: #10170e;
+    --color-text: #edf3e7;
+    --color-akzent: #b4d276;
+    --color-akzent2: #1c321b;
+    --color-akzent-warm: #e9a05d;
+    --color-akzent-warm-dunkel: #c8783e;
+    --color-flaeche: #1d2b1b;
+    --color-weiss: #ffffff;
+    --color-rahmen: #496345;
+    --color-text-footer: #b9c9af;
   }
 }
 
@@ -47,8 +47,8 @@
     border-width: 1px;
     border-radius: .75rem;
     padding: 1.75rem;
-    border-color: var(--rahmen);
-    background: var(--flaeche);
+    border-color: var(--color-rahmen);
+    background: var(--color-flaeche);
   }
 
   .button {
@@ -62,8 +62,8 @@
     right: 1.25rem;
     border-radius: 999px;
     padding: .25rem .5rem;
-    color: var(--weiss);
-    background: var(--akzent-warm);
+    color: var(--color-weiss);
+    background: var(--color-akzent-warm);
     font-size: .75rem;
     font-weight: 700;
   }
@@ -74,20 +74,21 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: var(--schrift);
+  color-scheme: light dark;
+  font-family: var(--font-schrift);
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--text);
-  background: var(--bg);
+  color: var(--color-text);
+  background: var(--color-bg);
 }
 
 main {
   flex: 1;
   width: min(100%, 72rem);
   margin-inline: auto;
-  padding: var(--abstand);
+  padding: var(--spacing-abstand);
   display: grid;
-  gap: var(--abstand);
+  gap: var(--spacing-abstand);
 }
 
 header {
@@ -102,16 +103,16 @@ nav {
   width: 100%;
   flex-wrap: wrap;
   gap: .5rem 1rem;
-  padding: .8rem var(--abstand);
-  color: var(--weiss);
-  background: var(--akzent2);
+  padding: .8rem var(--spacing-abstand);
+  color: var(--color-weiss);
+  background: var(--color-akzent2);
   border-bottom: 3px solid transparent;
   transition: border-color .2s ease, box-shadow .2s ease;
 }
 
 header.ist-gescrollt nav {
-  border-bottom-color: var(--akzent-warm);
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--bg) 55%, transparent);
+  border-bottom-color: var(--color-akzent-warm);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--color-bg) 55%, transparent);
 }
 
 nav > span {
@@ -128,17 +129,17 @@ nav > span {
 .marken-icon {
   width: 1.35rem;
   height: 1.35rem;
-  color: var(--akzent-warm);
+  color: var(--color-akzent-warm);
 }
 
-a { color: var(--akzent); }
+a { color: var(--color-akzent); }
 
 a[href]:not(nav a) {
-  color: var(--akzent-warm);
+  color: var(--color-akzent-warm);
 }
 
 nav a {
-  color: var(--weiss);
+  color: var(--color-weiss);
 }
 
 nav a {
@@ -148,22 +149,22 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--weiss);
-  background: color-mix(in srgb, var(--akzent2) 80%, var(--weiss));
+  color: var(--color-weiss);
+  background: color-mix(in srgb, var(--color-akzent2) 80%, var(--color-weiss));
 }
 
 nav a:focus-visible {
-  outline: 3px solid var(--weiss);
+  outline: 3px solid var(--color-weiss);
   outline-offset: 3px;
 }
 
 .eigene-karte {
   position: relative;
-  padding: var(--karten-padding);
-  border: 1px solid var(--rahmen);
-  border-radius: var(--radius);
-  background: var(--flaeche);
-  scroll-margin-top: var(--abstand);
+  padding: var(--spacing-karten-padding);
+  border: 1px solid var(--color-rahmen);
+  border-radius: var(--radius-card);
+  background: var(--color-flaeche);
+  scroll-margin-top: var(--spacing-abstand);
 }
 
 .eigene-karte h2 {
@@ -178,12 +179,12 @@ nav a:focus-visible {
 
 .karten-badge {
   position: absolute;
-  top: var(--abstand);
-  right: var(--abstand);
+  top: var(--spacing-abstand);
+  right: var(--spacing-abstand);
   padding: .2rem .5rem;
   border-radius: 999px;
-  color: var(--weiss);
-  background: var(--akzent2);
+  color: var(--color-weiss);
+  background: var(--color-akzent2);
   font-size: .75rem;
   font-weight: 700;
 }
@@ -195,7 +196,7 @@ section + section {
 form {
   display: grid;
   gap: 1rem;
-  margin-top: var(--abstand);
+  margin-top: var(--spacing-abstand);
 }
 
 .formular-feld {
@@ -213,19 +214,19 @@ form button {
   min-width: 0;
   min-height: 2.75rem;
   padding: .65rem .8rem;
-  border: 1px solid var(--rahmen);
-  border-radius: var(--button-radius);
+  border: 1px solid var(--color-rahmen);
+  border-radius: var(--radius-button);
   font: inherit;
 }
 
 form input {
-  color: var(--text);
-  background: var(--bg);
+  color: var(--color-text);
+  background: var(--color-bg);
 }
 
 form input:focus-visible,
 form button:focus-visible {
-  outline: 3px solid var(--akzent);
+  outline: 3px solid var(--color-akzent);
   outline-offset: 2px;
 }
 
@@ -236,11 +237,11 @@ form input[type="file"] {
 .button,
 form input[type="file"]::file-selector-button {
   margin-right: .65rem;
-  padding: var(--button-padding);
+  padding: var(--spacing-button-padding-y) var(--spacing-button-padding-x);
   border: 0;
-  border-radius: var(--button-radius);
-  color: var(--weiss);
-  background: var(--akzent-warm-dunkel);
+  border-radius: var(--radius-button);
+  color: var(--color-weiss);
+  background: var(--color-akzent-warm-dunkel);
   font: inherit;
   cursor: pointer;
 }
@@ -251,14 +252,14 @@ form input.button-file::file-selector-button {
 
 .button:hover,
 form input[type="file"]::file-selector-button:hover {
-  background: color-mix(in srgb, var(--akzent-warm-dunkel) 80%, var(--weiss));
+  background: color-mix(in srgb, var(--color-akzent-warm-dunkel) 80%, var(--color-weiss));
 }
 
 .button {
   margin-right: 0;
-  padding: var(--button-padding);
-  color: var(--weiss);
-  background: var(--akzent-warm-dunkel);
+  padding: var(--spacing-button-padding-y) var(--spacing-button-padding-x);
+  color: var(--color-weiss);
+  background: var(--color-akzent-warm-dunkel);
   cursor: pointer;
 }
 
@@ -268,9 +269,9 @@ form input[type="file"]::file-selector-button:hover {
 }
 
 footer {
-  padding: var(--abstand);
+  padding: var(--spacing-abstand);
   font-size: .875rem;
-  color: var(--text-footer);
+  color: var(--color-text-footer);
   text-align: center;
 }
 
@@ -284,7 +285,7 @@ footer {
   main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
-    gap: calc(var(--abstand) * 1.5);
+    gap: calc(var(--spacing-abstand) * 1.5);
     padding-block: 2rem;
   }
 
