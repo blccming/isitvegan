@@ -37,7 +37,10 @@ Ich möchte eine App bauen, die mir beim Einkaufen hilft, indem sie Produkte sca
 
 ## Datenquelle
 
-- Open Food Facts API: https://openfoodfacts.github.io/openfoodfacts-server/api/
+- **API:** https://world.openfoodfacts.org
+- **Dokumentation:** https://openfoodfacts.github.io/openfoodfacts-server/api/
+- Für die Anfragen ist kein API-Key erforderlich.
+- Der CORS-Test war erfolgreich: Die API antwortete mit Status `200` und `ok: true`.
 
 ## Lokal starten
 
