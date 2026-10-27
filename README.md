@@ -7,6 +7,10 @@ Eine App, die dir hilft, herauszufinden, ob ein Produkt vegan ist. Scanne einfac
 
 Die Website ist als Single-Page aufgebaut. Die Navigation springt über Anker direkt zu den Bereichen `#start` und `#ueber`.
 
+## Screenshot
+
+![Screenshot der Website](Screenshot.png)
+
 ## Was die App kann
 
 - Produkte über einen Barcode mit der Kamera scannen.
@@ -37,10 +41,11 @@ Ich möchte eine App bauen, die mir beim Einkaufen hilft, indem sie Produkte sca
 
 ## Lokal starten
 
-In VS Code mit Live Server öffnen – oder:
+Abhängigkeiten installieren und den Vite-Entwicklungsserver starten:
 
 ```bash
-npx serve .
+npm install
+npm run dev
 ```
 
 ## Technik
@@ -53,6 +58,12 @@ Der Vite-Build erzeugt unter `dist/assets/` die CSS-Datei `index-BWa8LM3T.css`. 
 
 Die Datei bleibt trotz der vielen Tailwind-Klassen klein, weil Tailwind im Produktions-Build nur die Klassen aus dem Projekt übernimmt,
 die tatsächlich im HTML und in den Styles verwendet werden. Nicht verwendete Klassen werden nicht übernommen. Zudem wird die Datei komprimiert (Entfernen von Leerzeichen etc.).
+
+## Lokal und live vergleichen
+
+Lokal und live waren gleich, weil dieselben HTML-, CSS- und JavaScript-Dateien verwendet und durch den Produktions-Build einheitlich verarbeitet werden.
+Die Falle unterschiedlicher Pfade wurde vermieden, indem alle internen Verweise relativ zur bereitgestellten Website funktionieren.
+Die deployte Website wurde während der Entwicklung regelmäßig geprüft, um sicherzustellen, dass alles korrekt dargestellt wird.
 
 ## Wiederverwendete Komponenten
 
