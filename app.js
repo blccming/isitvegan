@@ -132,6 +132,15 @@ formular.addEventListener("submit", (event) => {
     return;
   }
 
+  if (produktname.length > 100) {
+    zustand.meldung = {
+      text: "Der Produktname darf höchstens 100 Zeichen lang sein.",
+      istFehler: true,
+    };
+    zeichne();
+    return;
+  }
+
   // TODO(API): Demo-Umschalten - hier später das echte Prüfergebnis der API
   // einsetzen (siehe Kommentar bei `demoVegan`).
   const vegan = demoVegan;
