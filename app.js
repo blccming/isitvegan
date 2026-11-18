@@ -21,9 +21,64 @@ const verlaufListe = document.querySelector("#verlauf");
 const anzahl = document.querySelector("#anzahl");
 const filterFeld = document.querySelector("#verlauf-filter");
 
+// Teil B (Bonus): Verlauf über den Reload hinweg in localStorage merken
+const SPEICHER_SCHLUESSEL = "isitvegan.verlauf";
+const SPEICHER_VERSION = 2;
+
+const neueId = () =>
+  crypto.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+
+const hatGueltigeFelder = (eintrag) =>
+  eintrag !== null &&
+  typeof eintrag === "object" &&
+  typeof eintrag.produktname === "string" &&
+  eintrag.produktname.trim() !== "" &&
+  eintrag.produktname.length <= 100 &&
+  typeof eintrag.ean === "string" &&
+  /^[0-9]{8,14}$/.test(eintrag.ean) &&
+  typeof eintrag.vegan === "boolean";
+
+const istGueltigerEintrag = (eintrag) =>
+  hatGueltigeFelder(eintrag) && typeof eintrag.id === "string" && eintrag.id !== "";
+
+// Gespeicherte Daten können von einer älteren Version stammen, von Hand
+// verändert oder beschädigt sein. Dann lieber leer starten, als mit
+// unpassenden Einträgen weiterzuarbeiten oder die App abstürzen zu lassen.
+const ladeVerlauf = () => {
+  try {
+    const roh = localStorage.getItem(SPEICHER_SCHLUESSEL);
+    if (roh === null) return [];
+
+    const daten = JSON.parse(roh);
+    if (!Array.isArray(daten?.eintraege)) return [];
+
+    if (daten.version === 1) {
+      // Einträge aus Version 1 kennen noch keine id: übernehmen und ergänzen.
+      return daten.eintraege
+        .filter(hatGueltigeFelder)
+        .map((eintrag) => ({ ...eintrag, id: neueId() }));
+    }
+
+    if (daten.version !== SPEICHER_VERSION) return [];
+    return daten.eintraege.filter(istGueltigerEintrag);
+  } catch {
+    return [];
+  }
+};
+
+const speichereVerlauf = (verlauf) => {
+  try {
+    const daten = { version: SPEICHER_VERSION, eintraege: verlauf };
+    localStorage.setItem(SPEICHER_SCHLUESSEL, JSON.stringify(daten));
+  } catch {
+    // Kein localStorage (z. B. privater Modus oder voller Speicher):
+    // Die App läuft weiter, nur ohne Erinnerung über den Reload hinweg.
+  }
+};
+
 const zustand = {
   meldung: { text: "", istFehler: false },
-  verlauf: [],
+  verlauf: ladeVerlauf(),
   filter: "",
 };
 
@@ -103,7 +158,7 @@ const zeichne = () => {
       "rounded-lg px-2 py-1 text-sm font-semibold text-akzent-warm-dunkel hover:bg-akzent-warm/10";
     entfernen.textContent = "Entfernen";
     entfernen.setAttribute("aria-label", `„${eintrag.produktname}“ aus dem Verlauf entfernen`);
-    entfernen.dataset.ean = eintrag.ean;
+    entfernen.dataset.id = eintrag.id;
 
     const aktionen = document.createElement("div");
     aktionen.className = "flex items-center gap-3";
@@ -146,16 +201,16 @@ formular.addEventListener("submit", (event) => {
   const vegan = demoVegan;
   demoVegan = !demoVegan;
 
-  const bekannt = zustand.verlauf.some((eintrag) => eintrag.ean === ean);
-  zustand.verlauf = [
-    { produktname, ean, vegan },
-    ...zustand.verlauf.filter((eintrag) => eintrag.ean !== ean),
-  ];
+  // Jede Eingabe bleibt als eigener Eintrag erhalten. Die id sorgt dafür,
+  // dass auch bei gleicher EAN genau die angeklickte Zeile gelöscht wird.
+  const eanBekannt = zustand.verlauf.some((eintrag) => eintrag.ean === ean);
+  zustand.verlauf = [{ id: neueId(), produktname, ean, vegan }, ...zustand.verlauf];
+  speichereVerlauf(zustand.verlauf);
   zustand.filter = "";
   filterFeld.value = "";
   zustand.meldung = {
-    text: bekannt
-      ? `„${produktname}“ ist bereits im Verlauf – Eintrag aktualisiert.`
+    text: eanBekannt
+      ? `„${produktname}“ wurde hinzugefügt. Hinweis: Die EAN ist bereits im Verlauf.`
       : `„${produktname}“ wurde zum Verlauf hinzugefügt.`,
     istFehler: false,
   };
@@ -168,13 +223,15 @@ filterFeld.addEventListener("input", () => {
 });
 
 verlaufListe.addEventListener("click", (event) => {
-  const knopf = event.target.closest("button[data-ean]");
+  const knopf = event.target.closest("button[data-id]");
   if (!knopf) return;
 
-  const eintrag = zustand.verlauf.find((e) => e.ean === knopf.dataset.ean);
+  const id = knopf.dataset.id;
+  const eintrag = zustand.verlauf.find((e) => e.id === id);
   if (!eintrag) return;
 
-  zustand.verlauf = zustand.verlauf.filter((e) => e.ean !== knopf.dataset.ean);
+  zustand.verlauf = zustand.verlauf.filter((e) => e.id !== id);
+  speichereVerlauf(zustand.verlauf);
   zustand.meldung = { text: `„${eintrag.produktname}“ wurde entfernt.`, istFehler: false };
   zeichne();
 });

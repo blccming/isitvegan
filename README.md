@@ -18,6 +18,7 @@ Die Website ist als Single-Page aufgebaut. Die Navigation springt über Anker di
 - Produktdaten über die Open-Food-Facts-API abrufen.
 - Anzeigen, ob ein Produkt vegan ist, und die dazugehörigen Produktinformationen darstellen.
 - Eine verständliche Rückmeldung anzeigen, wenn ein Produkt nicht gefunden werden kann.
+- Die zuletzt geprüften Produkte über einen Reload hinweg behalten (`localStorage`).
 
 ## Alternative Appideen
 Zu Übungsblatt 1, Bonusaufgabe B: Ich ließ durch KI 5 Appideen generieren. 
