@@ -7,9 +7,9 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="Dependabot eingerichtet (+ Secret Scanning im Repo)">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="bonus: verlauf im localstorage">
+      <change afterPath="$PROJECT_DIR$/notizen/fehlersuche.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,23 +26,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0956507256094563" />
-      <entry key="MS500" value="2.2665571784587684" />
-      <entry key="S2" value="4.910759506434456" />
-      <entry key="S5" value="7.684227363366162" />
-      <entry key="S10" value="9.440102643038694" />
-      <entry key="S30" value="11.066494433559184" />
-      <entry key="S60" value="12.14442609256988" />
-      <entry key="M2" value="17.463730854993635" />
-      <entry key="M5" value="41.59930938913596" />
-      <entry key="M10" value="69.34824344237411" />
-      <entry key="M15" value="85.3393220878535" />
-      <entry key="M30" value="107.48287749989537" />
-      <entry key="H1" value="121.80172773364998" />
-      <entry key="H2" value="129.99978346038384" />
-      <entry key="H4" value="134.39390072483556" />
-      <entry key="D1" value="138.21708059507313" />
-      <entry key="W1" value="138.8877743111255" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000299392466029" />
+      <entry key="S2" value="1.2259628900301671" />
+      <entry key="S5" value="2.318260144893179" />
+      <entry key="S10" value="4.54539953011863" />
+      <entry key="S30" value="10.962568713557083" />
+      <entry key="S60" value="19.554200768127977" />
+      <entry key="M2" value="36.39098094511869" />
+      <entry key="M5" value="70.0277463390784" />
+      <entry key="M10" value="106.76195378789697" />
+      <entry key="M15" value="133.1984695903391" />
+      <entry key="M30" value="178.40801322642292" />
+      <entry key="H1" value="213.48486507797048" />
+      <entry key="H2" value="235.7292964301363" />
+      <entry key="H4" value="248.31184007599188" />
+      <entry key="D1" value="259.6372275980447" />
+      <entry key="W1" value="261.6604037437758" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -64,23 +64,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.0730602197278307" />
-      <entry key="MS500" value="2.256624775979521" />
-      <entry key="S2" value="4.905215343248315" />
-      <entry key="S5" value="7.680752729920476" />
-      <entry key="S10" value="9.437971062246397" />
-      <entry key="S30" value="11.065661189245919" />
-      <entry key="S60" value="12.143946631346187" />
-      <entry key="M2" value="17.463254746463566" />
-      <entry key="M5" value="41.59849961806709" />
-      <entry key="M10" value="69.34722402890425" />
-      <entry key="M15" value="85.33832768846655" />
-      <entry key="M30" value="107.4821245208262" />
-      <entry key="H1" value="121.80125895021011" />
-      <entry key="H2" value="129.99952121030492" />
-      <entry key="H4" value="134.3937619379269" />
-      <entry key="D1" value="138.21705633533517" />
-      <entry key="W1" value="138.88777081693183" />
+      <entry key="MS100" value="0.9592641193252643" />
+      <entry key="MS500" value="0.9920140551494975" />
+      <entry key="S2" value="1.2234932072302696" />
+      <entry key="S5" value="2.3164248188970697" />
+      <entry key="S10" value="4.543495242185383" />
+      <entry key="S30" value="10.960997358363372" />
+      <entry key="S60" value="19.552851210095316" />
+      <entry key="M2" value="36.38977285463034" />
+      <entry key="M5" value="70.02682270996482" />
+      <entry key="M10" value="106.76112042304362" />
+      <entry key="M15" value="133.1976453731123" />
+      <entry key="M30" value="178.40729995516773" />
+      <entry key="H1" value="213.48436809746613" />
+      <entry key="H2" value="235.72899927698117" />
+      <entry key="H4" value="248.311677118953" />
+      <entry key="D1" value="259.6371982230467" />
+      <entry key="W1" value="261.66039949001686" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -172,7 +172,7 @@
       <workItem from="1793091002121" duration="104000" />
       <workItem from="1793091151614" duration="1410000" />
       <workItem from="1793100330025" duration="2754000" />
-      <workItem from="1795043255792" duration="1573000" />
+      <workItem from="1795043255792" duration="2613000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -398,14 +398,21 @@
       <option name="project" value="LOCAL" />
       <updated>1795044722978</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="bonus: verlauf im localstorage">
+      <option name="closed" value="true" />
+      <created>1795045067796</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1795045067796</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="readme ergänzt" />
     <MESSAGE value="form mit drei feldern hinzugefügt" />
     <MESSAGE value="alles für die bots" />
     <MESSAGE value="json-ld fix für rich results test" />
@@ -430,6 +437,7 @@
     <MESSAGE value="KI-Log update" />
     <MESSAGE value="Sicherheits-Check" />
     <MESSAGE value="Dependabot eingerichtet (+ Secret Scanning im Repo)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dependabot eingerichtet (+ Secret Scanning im Repo)" />
+    <MESSAGE value="bonus: verlauf im localstorage" />
+    <option name="LAST_COMMIT_MESSAGE" value="bonus: verlauf im localstorage" />
   </component>
 </project>
