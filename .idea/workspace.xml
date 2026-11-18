@@ -7,8 +7,10 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="README angepasst">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="Infos über genutzte API ergänzt; CORS-Testergebnis">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +24,65 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.076020192697613" />
+      <entry key="MS500" value="3.1489554745332806" />
+      <entry key="S2" value="5.601091104925316" />
+      <entry key="S5" value="6.727323611208603" />
+      <entry key="S10" value="9.391544850374114" />
+      <entry key="S30" value="18.591593808383575" />
+      <entry key="S60" value="24.00646510489648" />
+      <entry key="M2" value="27.612389525366595" />
+      <entry key="M5" value="30.140637530702037" />
+      <entry key="M10" value="31.05197081158134" />
+      <entry key="M15" value="31.363828699428314" />
+      <entry key="M30" value="31.67981946990678" />
+      <entry key="H1" value="31.839382428820144" />
+      <entry key="H2" value="31.919558936837344" />
+      <entry key="H4" value="31.959746342471675" />
+      <entry key="D1" value="31.993286451444444" />
+      <entry key="W1" value="31.999040808781128" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.21158393915235707" />
+      <entry key="MS500" value="2.803586115459285" />
+      <entry key="S2" value="5.496717065994974" />
+      <entry key="S5" value="6.6812701824121" />
+      <entry key="S10" value="9.357047527465092" />
+      <entry key="S30" value="18.564179554777922" />
+      <entry key="S60" value="23.987841732679698" />
+      <entry key="M2" value="27.60141998226466" />
+      <entry key="M5" value="30.135781900525288" />
+      <entry key="M10" value="31.049458439669746" />
+      <entry key="M15" value="31.362134476528894" />
+      <entry key="M30" value="31.67896257182219" />
+      <entry key="H1" value="31.83895150798905" />
+      <entry key="H2" value="31.919342855307843" />
+      <entry key="H4" value="31.959638146031015" />
+      <entry key="D1" value="31.993268397048862" />
+      <entry key="W1" value="31.99903822905099" />
+    </decayedShown>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -50,24 +111,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Node.js.index.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/var/home/bloom/Documents/DHBW/WebEng1/isitvegan&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/var/home/bloom/.config/JetBrains/WebStorm2026.2/node/versions/24.21.0/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.index.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.index.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "master",
+    "javascript.preferred.runtime.type.id": "node",
+    "last_opened_file_path": "/var/home/bloom/Documents/DHBW/WebEng1/isitvegan",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/var/home/bloom/.config/JetBrains/WebStorm2026.2/node/versions/24.21.0/bin/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/isitvegan/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
@@ -85,7 +150,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.10968.77" />
+        <option value="bundled-js-predefined-d6986cc7102b-56aff7b04f6f-JavaScript-WS-263.7307.202" />
       </set>
     </attachedChunks>
   </component>
@@ -107,7 +172,8 @@
       <workItem from="1792602286127" duration="3114000" />
       <workItem from="1793091002121" duration="104000" />
       <workItem from="1793091151614" duration="1410000" />
-      <workItem from="1793100330025" duration="1934000" />
+      <workItem from="1793100330025" duration="2754000" />
+      <workItem from="1795043255792" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -285,7 +351,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793101998793</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Infos über genutzte API ergänzt; CORS-Testergebnis">
+      <option name="closed" value="true" />
+      <created>1793102294390</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1793102294390</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +388,7 @@
     <MESSAGE value="added deploy.yml" />
     <MESSAGE value="try fix for 404 für app.js wenn deployed" />
     <MESSAGE value="README angepasst" />
-    <option name="LAST_COMMIT_MESSAGE" value="README angepasst" />
+    <MESSAGE value="Infos über genutzte API ergänzt; CORS-Testergebnis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Infos über genutzte API ergänzt; CORS-Testergebnis" />
   </component>
 </project>
