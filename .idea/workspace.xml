@@ -7,10 +7,9 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="Infos über genutzte API ergänzt; CORS-Testergebnis">
+    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="Verlauf hinzugefügt mit Info vegan/nicht vegan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,23 +26,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.076020192697613" />
-      <entry key="MS500" value="3.1489554745332806" />
-      <entry key="S2" value="5.601091104925316" />
-      <entry key="S5" value="6.727323611208603" />
-      <entry key="S10" value="9.391544850374114" />
-      <entry key="S30" value="18.591593808383575" />
-      <entry key="S60" value="24.00646510489648" />
-      <entry key="M2" value="27.612389525366595" />
-      <entry key="M5" value="30.140637530702037" />
-      <entry key="M10" value="31.05197081158134" />
-      <entry key="M15" value="31.363828699428314" />
-      <entry key="M30" value="31.67981946990678" />
-      <entry key="H1" value="31.839382428820144" />
-      <entry key="H2" value="31.919558936837344" />
-      <entry key="H4" value="31.959746342471675" />
-      <entry key="D1" value="31.993286451444444" />
-      <entry key="W1" value="31.999040808781128" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000268391115128" />
+      <entry key="S2" value="1.2259340946467052" />
+      <entry key="S5" value="3.483044044406655" />
+      <entry key="S10" value="9.389964058706134" />
+      <entry key="S30" value="28.639173123668975" />
+      <entry key="S60" value="42.15688134971415" />
+      <entry key="M2" value="54.08855771703205" />
+      <entry key="M5" value="70.17345153202068" />
+      <entry key="M10" value="84.03289048598012" />
+      <entry key="M15" value="91.54332178562602" />
+      <entry key="M30" value="101.52320316223937" />
+      <entry key="H1" value="107.744670993637" />
+      <entry key="H2" value="111.23146642033961" />
+      <entry key="H4" value="113.07894277787797" />
+      <entry key="D1" value="114.67457456910691" />
+      <entry key="W1" value="114.95338024058542" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -65,23 +64,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.21158393915235707" />
-      <entry key="MS500" value="2.803586115459285" />
-      <entry key="S2" value="5.496717065994974" />
-      <entry key="S5" value="6.6812701824121" />
-      <entry key="S10" value="9.357047527465092" />
-      <entry key="S30" value="18.564179554777922" />
-      <entry key="S60" value="23.987841732679698" />
-      <entry key="M2" value="27.60141998226466" />
-      <entry key="M5" value="30.135781900525288" />
-      <entry key="M10" value="31.049458439669746" />
-      <entry key="M15" value="31.362134476528894" />
-      <entry key="M30" value="31.67896257182219" />
-      <entry key="H1" value="31.83895150798905" />
-      <entry key="H2" value="31.919342855307843" />
-      <entry key="H4" value="31.959638146031015" />
-      <entry key="D1" value="31.993268397048862" />
-      <entry key="W1" value="31.99903822905099" />
+      <entry key="MS100" value="0.9592641193252643" />
+      <entry key="MS500" value="0.9917432790405751" />
+      <entry key="S2" value="1.2232484677967963" />
+      <entry key="S5" value="3.4794648839341664" />
+      <entry key="S10" value="9.384725627170074" />
+      <entry key="S30" value="28.63332634296015" />
+      <entry key="S60" value="42.15243800489058" />
+      <entry key="M2" value="54.08566207184496" />
+      <entry key="M5" value="70.17152465884553" />
+      <entry key="M10" value="84.03129852027067" />
+      <entry key="M15" value="91.54198905869438" />
+      <entry key="M30" value="101.5223420933227" />
+      <entry key="H1" value="107.74417677144967" />
+      <entry key="H2" value="111.23120106696064" />
+      <entry key="H4" value="113.07880521766302" />
+      <entry key="D1" value="114.67455093505126" />
+      <entry key="W1" value="114.95337684657784" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -173,7 +172,7 @@
       <workItem from="1793091002121" duration="104000" />
       <workItem from="1793091151614" duration="1410000" />
       <workItem from="1793100330025" duration="2754000" />
-      <workItem from="1795043255792" duration="324000" />
+      <workItem from="1795043255792" duration="1002000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -359,7 +358,23 @@
       <option name="project" value="LOCAL" />
       <updated>1793102294390</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Ausgabe der form-Eingabe">
+      <option name="closed" value="true" />
+      <created>1795043731180</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1795043731180</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Verlauf hinzugefügt mit Info vegan/nicht vegan">
+      <option name="closed" value="true" />
+      <created>1795043985309</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1795043985309</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,6 +404,8 @@
     <MESSAGE value="try fix for 404 für app.js wenn deployed" />
     <MESSAGE value="README angepasst" />
     <MESSAGE value="Infos über genutzte API ergänzt; CORS-Testergebnis" />
-    <option name="LAST_COMMIT_MESSAGE" value="Infos über genutzte API ergänzt; CORS-Testergebnis" />
+    <MESSAGE value="Ausgabe der form-Eingabe" />
+    <MESSAGE value="Verlauf hinzugefügt mit Info vegan/nicht vegan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Verlauf hinzugefügt mit Info vegan/nicht vegan" />
   </component>
 </project>
