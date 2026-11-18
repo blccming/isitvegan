@@ -7,9 +7,11 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="Verlauf hinzugefügt mit Info vegan/nicht vegan">
+    <list default="true" id="a395d09a-406c-44f8-bbd6-40f64a774e82" name="Changes" comment="KI-Log update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,23 +28,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000268391115128" />
-      <entry key="S2" value="1.2259340946467052" />
-      <entry key="S5" value="3.483044044406655" />
-      <entry key="S10" value="9.389964058706134" />
-      <entry key="S30" value="28.639173123668975" />
-      <entry key="S60" value="42.15688134971415" />
-      <entry key="M2" value="54.08855771703205" />
-      <entry key="M5" value="70.17345153202068" />
-      <entry key="M10" value="84.03289048598012" />
-      <entry key="M15" value="91.54332178562602" />
-      <entry key="M30" value="101.52320316223937" />
-      <entry key="H1" value="107.744670993637" />
-      <entry key="H2" value="111.23146642033961" />
-      <entry key="H4" value="113.07894277787797" />
-      <entry key="D1" value="114.67457456910691" />
-      <entry key="W1" value="114.95338024058542" />
+      <entry key="MS100" value="1.0001644572237385" />
+      <entry key="MS500" value="1.1750695401109006" />
+      <entry key="S2" value="1.6468486077450393" />
+      <entry key="S5" value="1.8400808000858908" />
+      <entry key="S10" value="1.9165613482792476" />
+      <entry key="S30" value="2.1285065621381243" />
+      <entry key="S60" value="5.20058545454133" />
+      <entry key="M2" value="17.560191018696486" />
+      <entry key="M5" value="46.613440710849645" />
+      <entry key="M10" value="71.1948874971702" />
+      <entry key="M15" value="84.0684874894342" />
+      <entry key="M30" value="101.03257167631631" />
+      <entry key="H1" value="111.61125240038272" />
+      <entry key="H2" value="117.55615189928163" />
+      <entry key="H4" value="120.7125191416012" />
+      <entry key="D1" value="123.44269628758232" />
+      <entry key="W1" value="123.92015139889975" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -64,23 +66,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9592641193252643" />
-      <entry key="MS500" value="0.9917432790405751" />
-      <entry key="S2" value="1.2232484677967963" />
-      <entry key="S5" value="3.4794648839341664" />
-      <entry key="S10" value="9.384725627170074" />
-      <entry key="S30" value="28.63332634296015" />
-      <entry key="S60" value="42.15243800489058" />
-      <entry key="M2" value="54.08566207184496" />
-      <entry key="M5" value="70.17152465884553" />
-      <entry key="M10" value="84.03129852027067" />
-      <entry key="M15" value="91.54198905869438" />
-      <entry key="M30" value="101.5223420933227" />
-      <entry key="H1" value="107.74417677144967" />
-      <entry key="H2" value="111.23120106696064" />
-      <entry key="H4" value="113.07880521766302" />
-      <entry key="D1" value="114.67455093505126" />
-      <entry key="W1" value="114.95337684657784" />
+      <entry key="MS100" value="0.9462110907410405" />
+      <entry key="MS500" value="1.1616302223989137" />
+      <entry key="S2" value="1.6418419329241511" />
+      <entry key="S5" value="1.8378085869393372" />
+      <entry key="S10" value="1.9153718932576131" />
+      <entry key="S30" value="2.1280706370983835" />
+      <entry key="S60" value="5.20007688353444" />
+      <entry key="M2" value="17.559321371479097" />
+      <entry key="M5" value="46.612257452346434" />
+      <entry key="M10" value="71.19363792983" />
+      <entry key="M15" value="84.06734982441812" />
+      <entry key="M30" value="101.0317711823489" />
+      <entry key="H1" value="111.61077267475616" />
+      <entry key="H2" value="117.55588867531138" />
+      <entry key="H4" value="120.71238119149419" />
+      <entry key="D1" value="123.44267237015738" />
+      <entry key="W1" value="123.92014795883836" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -172,7 +174,7 @@
       <workItem from="1793091002121" duration="104000" />
       <workItem from="1793091151614" duration="1410000" />
       <workItem from="1793100330025" duration="2754000" />
-      <workItem from="1795043255792" duration="1002000" />
+      <workItem from="1795043255792" duration="1239000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -374,14 +376,21 @@
       <option name="project" value="LOCAL" />
       <updated>1795043985309</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="KI-Log update">
+      <option name="closed" value="true" />
+      <created>1795044278236</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1795044278236</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit" />
     <MESSAGE value="added template" />
     <MESSAGE value="jetzt single page mit ankern; about hinzugefügt" />
     <MESSAGE value="readme ergänzt" />
@@ -406,6 +415,7 @@
     <MESSAGE value="Infos über genutzte API ergänzt; CORS-Testergebnis" />
     <MESSAGE value="Ausgabe der form-Eingabe" />
     <MESSAGE value="Verlauf hinzugefügt mit Info vegan/nicht vegan" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verlauf hinzugefügt mit Info vegan/nicht vegan" />
+    <MESSAGE value="KI-Log update" />
+    <option name="LAST_COMMIT_MESSAGE" value="KI-Log update" />
   </component>
 </project>

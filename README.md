@@ -97,7 +97,7 @@ Checkliste aus Termin 6, geprüft am 19.11.2026:
 - [X] **Fremde Daten als Text:** Im Projekt wird kein `innerHTML`, `insertAdjacentHTML` oder `outerHTML` verwendet; Nutzereingaben laufen nur über `textContent` und `createElement`. Praxistest: `<img src=x onerror=alert(1)>` in EAN-, Produktnamen- und Filterfeld eingegeben – kein Dialog, der Text wurde nur als Text angezeigt.
 - [X] **Eingaben prüfen:** Die EAN wird per `pattern`/`maxlength` und JS-Regex auf 8–14 Ziffern geprüft, der Produktname auf leer und höchstens 100 Zeichen (HTML `maxlength` plus JS-Prüfung), jeweils mit verständlicher Meldung; das Dateifeld akzeptiert nur `image/*`.
 - [X] **HTTPS live:** `https://blccming.github.io/isitvegan/` antwortet über HTTPS, ein Aufruf über HTTP wird per 301 auf HTTPS umgeleitet; alle externen Verweise (Google Fonts, Open Food Facts) nutzen `https://`.
-- [ ] **GitHub gehärtet:** Die Zwei-Faktor-Authentifizierung ist im GitHub-Account aktiv. Dependabot ist über `.github/dependabot.yml` für npm und GitHub Actions (wöchentlich) eingerichtet; Dependabot-Alerts und Secret Scanning müssen in den Repo-Einstellungen unter „Code security and analysis“ noch aktiviert werden.
+- [X] **GitHub gehärtet:** Die Zwei-Faktor-Authentifizierung ist im GitHub-Account aktiv. Dependabot-Alerts und Secret Scanning sind in den Repo-Einstellungen unter „Code security and analysis“ aktiviert; die Dependabot-Updates steuert `.github/dependabot.yml` (npm und GitHub Actions, wöchentlich).
 - [X] **Saubere Fehler:** Die Meldungen sind kurze deutsche Sätze (z. B. „Bitte gib eine EAN mit 8 bis 14 Ziffern ein.“); es werden keine Stacktraces oder internen Details an Nutzer ausgegeben.
 
 ## KI-Log
