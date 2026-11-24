@@ -40,8 +40,17 @@ Ich möchte eine App bauen, die mir beim Einkaufen hilft, indem sie Produkte sca
 
 - **API:** https://world.openfoodfacts.org
 - **Dokumentation:** https://openfoodfacts.github.io/openfoodfacts-server/api/
-- Für die Anfragen ist kein API-Key erforderlich.
-- Der CORS-Test war erfolgreich: Die API antwortete mit Status `200` und `ok: true`.
+- **API-Key:** Kein Key erforderlich; die Read-API ist direkt aus dem Browser nutzbar.
+- **Limit:** 15 Produktabfragen pro Minute und IP-Adresse, also maximal 900 pro Stunde.
+- **CORS:** Erfolgreich getestet; die Antwort erlaubt mit `access-control-allow-origin: *` Aufrufe von anderen Domains.
+- **Benötigte Return-Felder:** `product_name`, `ingredients_text` und `ingredients_analysis_tags`.
+
+Die getestete URL lautet:
+`https://world.openfoodfacts.org/api/v2/product/<EAN>?fields=product_name,ingredients_text,ingredients_analysis_tags`
+
+Mit der EAN `3017620422003` wurde die Antwort per curl geprüft. Sie enthält unter anderem
+`"product_name":"Nutella"`, `"ingredients_text":"sugar, palm oil"` und
+`"ingredients_analysis_tags":["en:palm-oil","en:maybe-vegan","en:vegetarian"]`.
 
 ## Lokal starten
 
