@@ -23,7 +23,7 @@ const filterFeld = document.querySelector("#verlauf-filter");
 
 // Teil B (Bonus): Verlauf über den Reload hinweg in localStorage merken
 const SPEICHER_SCHLUESSEL = "isitvegan.verlauf";
-const SPEICHER_VERSION = 2;
+const SPEICHER_VERSION = 3;
 
 const neueId = () =>
   crypto.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
@@ -38,8 +38,18 @@ const hatGueltigeFelder = (eintrag) =>
   /^[0-9]{8,14}$/.test(eintrag.ean) &&
   typeof eintrag.vegan === "boolean";
 
-const istGueltigerEintrag = (eintrag) =>
-  hatGueltigeFelder(eintrag) && typeof eintrag.id === "string" && eintrag.id !== "";
+const hatGueltigeFelderV3 = (eintrag) =>
+  eintrag !== null &&
+  typeof eintrag === "object" &&
+  typeof eintrag.produktname === "string" &&
+  eintrag.produktname.trim() !== "" &&
+  eintrag.produktname.length <= 100 &&
+  typeof eintrag.ean === "string" &&
+  /^[0-9]{8,14}$/.test(eintrag.ean) &&
+  ["vegan", "nicht-vegan", "unklar"].includes(eintrag.veganStatus);
+
+const istGueltigerEintragV3 = (eintrag) =>
+  hatGueltigeFelderV3(eintrag) && typeof eintrag.id === "string" && eintrag.id !== "";
 
 // Gespeicherte Daten können von einer älteren Version stammen, von Hand
 // verändert oder beschädigt sein. Dann lieber leer starten, als mit
@@ -52,15 +62,21 @@ const ladeVerlauf = () => {
     const daten = JSON.parse(roh);
     if (!Array.isArray(daten?.eintraege)) return [];
 
-    if (daten.version === 1) {
-      // Einträge aus Version 1 kennen noch keine id: übernehmen und ergänzen.
+    if (daten.version === 1 || daten.version === 2) {
+      // Alte Einträge enthalten noch einen booleschen vegan-Wert.
       return daten.eintraege
         .filter(hatGueltigeFelder)
-        .map((eintrag) => ({ ...eintrag, id: neueId() }));
+        .map((eintrag) => ({
+          produktname: eintrag.produktname,
+          ean: eintrag.ean,
+          veganStatus: eintrag.vegan ? "vegan" : "nicht-vegan",
+          id: daten.version === 1 ? neueId() : eintrag.id,
+        }))
+        .filter(istGueltigerEintragV3);
     }
 
     if (daten.version !== SPEICHER_VERSION) return [];
-    return daten.eintraege.filter(istGueltigerEintrag);
+    return daten.eintraege.filter(istGueltigerEintragV3);
   } catch {
     return [];
   }
@@ -82,13 +98,41 @@ const zustand = {
   filter: "",
 };
 
-// TODO(API): Demo-Platzhalter - solange Open Food Facts noch nicht angebunden
-// ist, wechselt der vegane Status bei jeder Eingabe zwischen vegan und nicht vegan.
-// Sobald die API-Abfrage eingebaut ist, stattdessen den echten Wert aus der
-// API-Antwort in `vegan` schreiben (Open Food Facts liefert dafür u. a.
-// `ingredients_analysis_tags` mit `en:vegan` bzw. `en:non-vegan`).
-// Diese Variable und das Umschalten beim Absenden dann entfernen.
-let demoVegan = true;
+const holeProdukt = async (ean) => {
+  const url = new URL(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(ean)}`);
+  url.searchParams.set("fields", "product_name,ingredients_analysis_tags");
+
+  const res = await fetch(url);
+  let daten;
+  try {
+    daten = await res.json();
+  } catch (error) {
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    throw error;
+  }
+
+  if (!res.ok && !(res.status === 404 && daten.status === 0 && daten.code === ean)) {
+    throw new Error(`HTTP ${res.status}`);
+  }
+  if (daten.status === 0 && daten.code === null) {
+    throw new Error("Die Open-Food-Facts-URL ist ungültig. Bitte prüfe den API-Pfad.");
+  }
+  if (daten.status === 0 && daten.code === ean) {
+    throw new Error("Für diese EAN wurde kein Produkt gefunden.");
+  }
+  if (daten.status !== 1 || !daten.product) {
+    throw new Error("Für diese EAN wurde kein Produkt gefunden.");
+  }
+
+  const tags = daten.product.ingredients_analysis_tags;
+  const veganStatus = Array.isArray(tags) && tags.includes("en:vegan")
+    ? "vegan"
+    : Array.isArray(tags) && tags.includes("en:non-vegan")
+      ? "nicht-vegan"
+      : "unklar";
+
+  return { produktname: daten.product.product_name, veganStatus };
+};
 
 const eintraegeWort = (anzahlEintraege) =>
   anzahlEintraege === 1 ? "1 Eintrag" : `${anzahlEintraege} Einträge`;
@@ -142,15 +186,17 @@ const zeichne = () => {
     ean.textContent = `EAN ${eintrag.ean}`;
     text.append(name, ean);
 
-    // TODO(API): Platzhalter-Badge - zeigt den echten Wert, sobald `eintrag.vegan`
-    // aus der API-Antwort statt aus dem Demo-Umschalten stammt.
+    const vegan = eintrag.veganStatus === "vegan";
+    const nichtVegan = eintrag.veganStatus === "nicht-vegan";
     const veganStatus = document.createElement("span");
     veganStatus.className = `rounded-full px-2.5 py-0.5 text-xs font-bold ${
-      eintrag.vegan
+      vegan
         ? "bg-akzent/15 text-akzent"
-        : "bg-akzent-warm/20 text-akzent-warm-dunkel"
+        : nichtVegan
+          ? "bg-akzent-warm/20 text-akzent-warm-dunkel"
+          : "bg-bg text-text-footer"
     }`;
-    veganStatus.textContent = eintrag.vegan ? "Vegan" : "Nicht vegan";
+    veganStatus.textContent = vegan ? "Vegan" : nichtVegan ? "Nicht vegan" : "Unklar";
 
     const entfernen = document.createElement("button");
     entfernen.type = "button";
@@ -169,11 +215,12 @@ const zeichne = () => {
   }
 };
 
-formular.addEventListener("submit", (event) => {
+formular.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const ean = formular.elements.ean.value.trim();
-  const produktname = formular.elements.produktname.value.trim();
+  const eingegebenerProduktname = formular.elements.produktname.value.trim();
+  const absendeKnopf = formular.querySelector('button[type="submit"]');
 
   if (!/^[0-9]{8,14}$/.test(ean)) {
     zustand.meldung = { text: "Bitte gib eine EAN mit 8 bis 14 Ziffern ein.", istFehler: true };
@@ -181,13 +228,7 @@ formular.addEventListener("submit", (event) => {
     return;
   }
 
-  if (produktname === "") {
-    zustand.meldung = { text: "Bitte gib einen Produktnamen ein.", istFehler: true };
-    zeichne();
-    return;
-  }
-
-  if (produktname.length > 100) {
+  if (eingegebenerProduktname.length > 100) {
     zustand.meldung = {
       text: "Der Produktname darf höchstens 100 Zeichen lang sein.",
       istFehler: true,
@@ -196,25 +237,47 @@ formular.addEventListener("submit", (event) => {
     return;
   }
 
-  // TODO(API): Demo-Umschalten - hier später das echte Prüfergebnis der API
-  // einsetzen (siehe Kommentar bei `demoVegan`).
-  const vegan = demoVegan;
-  demoVegan = !demoVegan;
-
-  // Jede Eingabe bleibt als eigener Eintrag erhalten. Die id sorgt dafür,
-  // dass auch bei gleicher EAN genau die angeklickte Zeile gelöscht wird.
-  const eanBekannt = zustand.verlauf.some((eintrag) => eintrag.ean === ean);
-  zustand.verlauf = [{ id: neueId(), produktname, ean, vegan }, ...zustand.verlauf];
-  speichereVerlauf(zustand.verlauf);
-  zustand.filter = "";
-  filterFeld.value = "";
-  zustand.meldung = {
-    text: eanBekannt
-      ? `„${produktname}“ wurde hinzugefügt. Hinweis: Die EAN ist bereits im Verlauf.`
-      : `„${produktname}“ wurde zum Verlauf hinzugefügt.`,
-    istFehler: false,
-  };
+  absendeKnopf.disabled = true;
+  zustand.meldung = { text: "Lade Produktdaten …", istFehler: false };
   zeichne();
+
+  try {
+    const produkt = await holeProdukt(ean);
+    const produktname = produkt.produktname?.trim() || eingegebenerProduktname;
+    if (!produktname) {
+      throw new Error("Für dieses Produkt ist kein Name verfügbar. Bitte gib einen Produktnamen ein.");
+    }
+
+    // Jede Eingabe bleibt als eigener Eintrag erhalten.
+    const eanBekannt = zustand.verlauf.some((eintrag) => eintrag.ean === ean);
+    zustand.verlauf = [
+      { id: neueId(), produktname, ean, veganStatus: produkt.veganStatus },
+      ...zustand.verlauf,
+    ];
+    speichereVerlauf(zustand.verlauf);
+    zustand.filter = "";
+    filterFeld.value = "";
+
+    const statusText = produkt.veganStatus === "vegan"
+      ? "vegan"
+      : produkt.veganStatus === "nicht-vegan"
+        ? "nicht vegan"
+        : "nicht eindeutig bestimmbar";
+    zustand.meldung = {
+      text: `„${produktname}“ ist laut Open Food Facts ${statusText}.${eanBekannt ? " Die EAN ist bereits im Verlauf." : ""}`,
+      istFehler: false,
+    };
+  } catch (error) {
+    const text = error instanceof Error && error.message.startsWith("HTTP ")
+      ? `Open Food Facts antwortet mit ${error.message}. Bitte versuche es später erneut.`
+      : error instanceof Error
+        ? error.message
+        : "Die Produktdaten konnten nicht abgerufen werden. Bitte prüfe deine Verbindung.";
+    zustand.meldung = { text, istFehler: true };
+  } finally {
+    absendeKnopf.disabled = false;
+    zeichne();
+  }
 });
 
 filterFeld.addEventListener("input", () => {
