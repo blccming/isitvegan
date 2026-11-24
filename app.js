@@ -1,5 +1,6 @@
 // Ab Termin 6 wird das hier interessant.
 // Bis dahin reicht ein Lebenszeichen, damit ihr seht, dass die Datei geladen wird.
+import { BrowserMultiFormatOneDReader } from "@zxing/browser";
 
 const jahr = document.querySelector("#jahr");
 if (jahr) jahr.textContent = new Date().getFullYear();
@@ -20,10 +21,13 @@ const status = document.querySelector("#status");
 const verlaufListe = document.querySelector("#verlauf");
 const anzahl = document.querySelector("#anzahl");
 const filterFeld = document.querySelector("#verlauf-filter");
+const barcodeBild = formular.elements.barcodebild;
+const absendeKnopf = formular.querySelector('button[type="submit"]');
+const barcodeLeser = new BrowserMultiFormatOneDReader();
 
 // Teil B (Bonus): Verlauf über den Reload hinweg in localStorage merken
 const SPEICHER_SCHLUESSEL = "isitvegan.verlauf";
-const SPEICHER_VERSION = 3;
+const SPEICHER_VERSION = 4;
 
 const neueId = () =>
   crypto.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
@@ -48,8 +52,14 @@ const hatGueltigeFelderV3 = (eintrag) =>
   /^[0-9]{8,14}$/.test(eintrag.ean) &&
   ["vegan", "nicht-vegan", "unklar"].includes(eintrag.veganStatus);
 
+const hatGueltigeFelderV4 = (eintrag) =>
+  hatGueltigeFelderV3(eintrag) && typeof eintrag.apiProduktname === "string";
+
 const istGueltigerEintragV3 = (eintrag) =>
   hatGueltigeFelderV3(eintrag) && typeof eintrag.id === "string" && eintrag.id !== "";
+
+const istGueltigerEintragV4 = (eintrag) =>
+  hatGueltigeFelderV4(eintrag) && typeof eintrag.id === "string" && eintrag.id !== "";
 
 // Gespeicherte Daten können von einer älteren Version stammen, von Hand
 // verändert oder beschädigt sein. Dann lieber leer starten, als mit
@@ -68,15 +78,22 @@ const ladeVerlauf = () => {
         .filter(hatGueltigeFelder)
         .map((eintrag) => ({
           produktname: eintrag.produktname,
+          apiProduktname: eintrag.produktname,
           ean: eintrag.ean,
           veganStatus: eintrag.vegan ? "vegan" : "nicht-vegan",
           id: daten.version === 1 ? neueId() : eintrag.id,
         }))
-        .filter(istGueltigerEintragV3);
+        .filter(istGueltigerEintragV4);
+    }
+
+    if (daten.version === 3) {
+      return daten.eintraege
+        .filter(istGueltigerEintragV3)
+        .map((eintrag) => ({ ...eintrag, apiProduktname: eintrag.produktname }));
     }
 
     if (daten.version !== SPEICHER_VERSION) return [];
-    return daten.eintraege.filter(istGueltigerEintragV3);
+    return daten.eintraege.filter(istGueltigerEintragV4);
   } catch {
     return [];
   }
@@ -147,7 +164,7 @@ const zeichne = () => {
   const filter = zustand.filter.trim().toLowerCase();
   const sichtbar = filter
     ? zustand.verlauf.filter((eintrag) =>
-        `${eintrag.produktname} ${eintrag.ean}`.toLowerCase().includes(filter)
+        `${eintrag.produktname} ${eintrag.apiProduktname} ${eintrag.ean}`.toLowerCase().includes(filter)
       )
     : zustand.verlauf;
 
@@ -179,11 +196,15 @@ const zeichne = () => {
     const text = document.createElement("div");
     text.className = "min-w-0";
     const name = document.createElement("p");
-    name.className = "font-semibold [overflow-wrap:anywhere]";
+    name.className = "text-lg font-bold [overflow-wrap:anywhere]";
     name.textContent = eintrag.produktname;
     const ean = document.createElement("p");
-    ean.className = "text-sm text-text-footer";
-    ean.textContent = `EAN ${eintrag.ean}`;
+    ean.className = "text-sm text-text-footer [overflow-wrap:anywhere]";
+    ean.textContent = `EAN ${eintrag.ean}${
+      eintrag.apiProduktname && eintrag.apiProduktname !== eintrag.produktname
+        ? ` · Open Food Facts: ${eintrag.apiProduktname}`
+        : ""
+    }`;
     text.append(name, ean);
 
     const vegan = eintrag.veganStatus === "vegan";
@@ -215,17 +236,17 @@ const zeichne = () => {
   }
 };
 
-formular.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const ean = formular.elements.ean.value.trim();
-  const eingegebenerProduktname = formular.elements.produktname.value.trim();
-  const absendeKnopf = formular.querySelector('button[type="submit"]');
-
+const pruefeEan = async (ean, eingegebenerProduktname) => {
   if (!/^[0-9]{8,14}$/.test(ean)) {
     zustand.meldung = { text: "Bitte gib eine EAN mit 8 bis 14 Ziffern ein.", istFehler: true };
     zeichne();
-    return;
+    return false;
+  }
+
+  if (!eingegebenerProduktname) {
+    zustand.meldung = { text: "Bitte gib einen Produktnamen ein.", istFehler: true };
+    zeichne();
+    return false;
   }
 
   if (eingegebenerProduktname.length > 100) {
@@ -234,7 +255,7 @@ formular.addEventListener("submit", async (event) => {
       istFehler: true,
     };
     zeichne();
-    return;
+    return false;
   }
 
   absendeKnopf.disabled = true;
@@ -243,15 +264,18 @@ formular.addEventListener("submit", async (event) => {
 
   try {
     const produkt = await holeProdukt(ean);
-    const produktname = produkt.produktname?.trim() || eingegebenerProduktname;
-    if (!produktname) {
-      throw new Error("Für dieses Produkt ist kein Name verfügbar. Bitte gib einen Produktnamen ein.");
-    }
+    const apiProduktname = produkt.produktname?.trim() ?? "";
 
     // Jede Eingabe bleibt als eigener Eintrag erhalten.
     const eanBekannt = zustand.verlauf.some((eintrag) => eintrag.ean === ean);
     zustand.verlauf = [
-      { id: neueId(), produktname, ean, veganStatus: produkt.veganStatus },
+      {
+        id: neueId(),
+        produktname: eingegebenerProduktname,
+        apiProduktname,
+        ean,
+        veganStatus: produkt.veganStatus,
+      },
       ...zustand.verlauf,
     ];
     speichereVerlauf(zustand.verlauf);
@@ -264,7 +288,7 @@ formular.addEventListener("submit", async (event) => {
         ? "nicht vegan"
         : "nicht eindeutig bestimmbar";
     zustand.meldung = {
-      text: `„${produktname}“ ist laut Open Food Facts ${statusText}.${eanBekannt ? " Die EAN ist bereits im Verlauf." : ""}`,
+      text: `„${eingegebenerProduktname}“ ist laut Open Food Facts ${statusText}.${eanBekannt ? " Die EAN ist bereits im Verlauf." : ""}`,
       istFehler: false,
     };
   } catch (error) {
@@ -277,6 +301,63 @@ formular.addEventListener("submit", async (event) => {
   } finally {
     absendeKnopf.disabled = false;
     zeichne();
+  }
+  return true;
+};
+
+formular.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  await pruefeEan(
+    formular.elements.ean.value.trim(),
+    formular.elements.produktname.value.trim()
+  );
+});
+
+barcodeBild.addEventListener("change", async () => {
+  const datei = barcodeBild.files?.[0];
+  if (!datei) return;
+
+  if (!datei.type.startsWith("image/")) {
+    zustand.meldung = { text: "Bitte wähle eine Bilddatei aus.", istFehler: true };
+    zeichne();
+    barcodeBild.value = "";
+    return;
+  }
+
+  if (!formular.elements.produktname.value.trim()) {
+    zustand.meldung = {
+      text: "Bitte gib einen Produktnamen ein, bevor du ein Barcode-Foto auswählst.",
+      istFehler: true,
+    };
+    zeichne();
+    formular.elements.produktname.focus();
+    barcodeBild.value = "";
+    return;
+  }
+
+  let bildUrl;
+  barcodeBild.disabled = true;
+  absendeKnopf.disabled = true;
+  zustand.meldung = { text: "Lese Barcode aus dem Bild …", istFehler: false };
+  zeichne();
+
+  try {
+    bildUrl = URL.createObjectURL(datei);
+    const ergebnis = await barcodeLeser.decodeFromImageUrl(bildUrl);
+    const ean = ergebnis.getText().trim();
+    formular.elements.ean.value = ean;
+    await pruefeEan(ean, formular.elements.produktname.value.trim());
+  } catch {
+    zustand.meldung = {
+      text: "Im Bild wurde kein Barcode erkannt. Bitte lade ein scharfes Foto mit sichtbarem EAN-Barcode hoch.",
+      istFehler: true,
+    };
+    zeichne();
+  } finally {
+    if (bildUrl) URL.revokeObjectURL(bildUrl);
+    barcodeBild.disabled = false;
+    barcodeBild.value = "";
+    absendeKnopf.disabled = false;
   }
 });
 

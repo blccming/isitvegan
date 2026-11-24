@@ -14,6 +14,7 @@ Die Website ist als Single-Page aufgebaut. Die Navigation springt über Anker di
 ## Was die App kann
 
 - Produkte über einen Barcode mit der Kamera scannen.
+- EAN-Codes aus einem hochgeladenen Barcode-Foto auslesen.
 - Eine EAN-Nummer manuell eingeben und suchen.
 - Produktdaten über die Open-Food-Facts-API abrufen.
 - Anzeigen, ob ein Produkt vegan ist, und die dazugehörigen Produktinformationen darstellen.
@@ -51,6 +52,12 @@ Die getestete URL lautet:
 Mit der EAN `3017620422003` wurde die Antwort per curl geprüft. Sie enthält unter anderem
 `"product_name":"Nutella"`, `"ingredients_text":"sugar, palm oil"` und
 `"ingredients_analysis_tags":["en:palm-oil","en:maybe-vegan","en:vegetarian"]`.
+
+## Barcode-Bibliothek
+
+Wir nutzen [`@zxing/browser`](https://www.npmjs.com/package/@zxing/browser), um EAN-13-Barcodes direkt aus dem Foto-Upload im Browser auszulesen und anschließend das Produkt zu prüfen. So entfällt ein eigener Decoder.
+
+Stand 24.11.2026: **2.108.491 npm-Downloads/Woche** (17.–23.11.), aktuelle Version **0.2.1**, **MIT-Lizenz**. Bundlephobia: **27,3 kB** minifiziert (**7,0 kB** gzip). [Bundlephobia](https://bundlephobia.com/package/@zxing/browser@0.2.1)
 
 ## Lokal starten
 
