@@ -133,7 +133,7 @@
       {\large\bfseries Im Projekt}
       \small
       \begin{itemize}
-        \item HTML/CSS: Oberfläche; \texttt{app.js}: Formular, API und Zustand.
+        \item HTML mit Tailwind: Oberfläche; \texttt{app.js}: Formular, API, Zustand.
         \item Vite \(\rightarrow\) \texttt{dist/} \(\rightarrow\) GitHub Actions \(\rightarrow\) Pages.
       \end{itemize}
     \column{0.47\textwidth}
@@ -147,88 +147,102 @@
 \end{frame}
 
 \begin{frame}{Vorgehen: vom Grundgerüst zum Live-Check}
-  \framesubtitle{Sechs Ausbaustufen}
+  \framesubtitle{Fünf Ausbaustufen}
   \centering
   \begin{tikzpicture}[
     schritt/.style={
       draw=Linie, fill=Flaeche, rounded corners=4pt, line width=0.8pt,
-      text width=3cm, minimum height=1.25cm, align=center,
-      inner sep=7pt, font=\small
+      text width=1.8cm, minimum height=3.4cm, align=center,
+      inner sep=4pt
     },
+    datum/.style={anchor=north, inner sep=0pt, font=\scriptsize\bfseries, text=Akzent},
+    titel/.style={anchor=north, inner sep=0pt, font=\small\bfseries, text=Tinte},
+    beschreibung/.style={anchor=north, inner sep=0pt, font=\footnotesize, text=Tinte, align=center},
     fluss/.style={draw=Akzent, line width=1.3pt, -stealth}
   ]
-    \node[schritt] (start) at (0,0) {
-      \textcolor{Akzent}{\textbf{30.09 \textperiodcentered{} Start}}\\
-      HTML-Grundgerüst\\+ Vorlage
-    };
-    \node[schritt] (idee) at (4,0) {
-      \textcolor{Akzent}{\textbf{14.10 \textperiodcentered{} Oberfläche}}\\
-      Single-Page\\Formular + Layout\\SEO/Metadaten
-    };
-    \node[schritt] (stack) at (8,0) {
-      \textcolor{Akzent}{\textbf{21.–27.10 \textperiodcentered{} Design}}\\
-      Responsive Layout\\Tailwind + Pages
-    };
-    \node[schritt] (interaktion) at (8,-2.2) {
-      \textcolor{Akzent}{\textbf{19.11 \textperiodcentered{} Interaktion}}\\
-      Ergebnis + Verlauf\\localStorage + Sicherheits-Check
-    };
-    \node[schritt] (daten) at (4,-2.2) {
-      \textcolor{Akzent}{\textbf{24.11 \textperiodcentered{} API + Scan}}\\
-      Open Food Facts\\ZXing + Cache
-    };
-    \node[schritt] (live) at (0,-2.2) {
-      \textcolor{Akzent}{\textbf{24.11 \textperiodcentered{} Live-Fix}}\\
-      Pages-Pfad korrigiert\\Live-Version geprüft
-    };
+    \node[schritt] (start) at (0,0) {};
+    \node[schritt] (idee) at (2.5,0) {};
+    \node[schritt] (stack) at (5,0) {};
+    \node[schritt] (interaktion) at (7.5,0) {};
+    \node[schritt] (daten) at (10,0) {};
     \draw[fluss] (start) -- (idee);
     \draw[fluss] (idee) -- (stack);
-    \draw[fluss] (stack.south) -- (interaktion.north);
-    \draw[fluss] (interaktion.west) -- (daten.east);
-    \draw[fluss] (daten.west) -- (live.east);
+    \draw[fluss] (stack) -- (interaktion);
+    \draw[fluss] (interaktion) -- (daten);
+    \node[datum] at (0,1.3) {30.09};
+    \node[titel] at (0,0.72) {Start};
+    \node[beschreibung] at (0,0.1) {HTML\\Grundgerüst\\+ Vorlage};
+    \node[datum] at (2.5,1.3) {14.10};
+    \node[titel] at (2.5,0.72) {Oberfläche};
+    \node[beschreibung] at (2.5,0.1) {Single-Page\\Formular\\SEO};
+    \node[datum] at (5,1.3) {21.–27.10};
+    \node[titel] at (5,0.72) {Responsive};
+    \node[beschreibung] at (5,0.1) {Tailwind\\Flex/Grid\\Pages};
+    \node[datum] at (7.5,1.3) {19.11};
+    \node[titel] at (7.5,0.72) {Interaktion};
+    \node[beschreibung] at (7.5,0.1) {Ergebnis\\Verlauf\\Speicherung\\Sicherheit};
+    \node[datum] at (10,1.3) {24.11};
+    \node[titel] at (10,0.72) {API + Scan};
+    \node[beschreibung] at (10,0.1) {Open Food\\Facts\\ZXing\\Cache};
   \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{KI im Projekt}
-  \framesubtitle{Werkzeuge, Einsatz und eigene Prüfung}
+  \framesubtitle{Werkzeuge, Nutzen und Grenzen}
+  {\large\bfseries\color{Akzent}Werkzeuge}
+  \vspace{0.15cm}
+
+  \small
+  Hauptsächlich GitHub Copilot; gelegentlich Claude Code mit
+  \texttt{deepseek-v4.1-flash:1017}. DeepSeek mit Claude Code lieferte insgesamt
+  bessere Ergebnisse, Copilot war aber ebenfalls zufriedenstellend.
+
+  \vspace{0.35cm}
   \begin{columns}[T,onlytextwidth]
     \column{0.47\textwidth}
-      {\large\bfseries Wo KI geholfen hat}
+      {\large\bfseries\color{Akzent}Hilfreich}
       \small
       \begin{itemize}
-        \item Copilot half bei Ideen, Tailwind-Umsetzung, API/ZXing und Deployment.
-        \item Claude Code unterstützte Formular ohne Reload, Zustandsobjekt und gefilterten Verlauf.
-        \item Beispielprompt: \glqq Generiere mir 5 Projektideen für eine Webapp, die den Alltag erleichtern.\grqq{}
+        \item Entwürfe in Sekunden: Ideen und Design als Prototyp testen, ohne alles aufwendig selbst zu bauen.
+        \item Tutorials und Doku überspringen, um die App schnell zu starten -- fehlendes Wissen kann später zum Problem werden.
       \end{itemize}
     \column{0.47\textwidth}
-      {\large\bfseries Was ich selbst prüfen musste}
+      {\large\bfseries\color{Akzent}Problematisch}
       \small
       \begin{itemize}
-        \item Ein erster Verlaufsentwurf nutzte eigenes CSS statt des Tailwind-Ansatzes im Projekt.
-        \item Ich habe die Umsetzung angepasst und mit API-Antworten sowie der Live-Seite abgeglichen.
-        \item KI lieferte Vorschläge und beschleunigte Umsetzung; Entscheidungen und Ergebnis blieben bei mir.
+        \item Fehlt Kontext, fragt die KI nicht immer nach: Anforderungen präzisieren; Projektwissen in \texttt{AGENTS.md} o. Ä. festhalten.
+        \item Der Chat-Fokus kann das Big Picture verdrängen. Bei festgefahrenem Kontext hilft oft eine neue Session.
       \end{itemize}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Was ich mitnehme}
-  \framesubtitle{Erkenntnisse und nächster Schritt}
-  \begin{columns}[T,onlytextwidth]
-    \column{0.47\textwidth}
-      {\large\bfseries Gelernt}
-      \begin{itemize}
-        \item Eine API kann Daten liefern, aber keine verlässliche Aussage: fehlende Analyse-Tags bedeuten „Unklar“.
-        \item EAN-Eingabe, Foto-Scan, API-Fehler und Deployment sind Teil derselben Nutzerreise.
-        \item Browser-Speicher braucht Datenprüfung und Versionswechsel, nicht nur ein \texttt{setItem}.
-      \end{itemize}
-    \column{0.47\textwidth}
-      {\large\bfseries Beim nächsten Projekt}
-      \begin{itemize}
-        \item API-Antworten und Grenzfälle von Anfang an als Testfälle festhalten.
-        \item Foto-Scan früher auf echten Mobilgeräten ausprobieren.
-        \item Zuständigkeiten für Oberfläche, Datenzugriff und Speicherung früher trennen.
-      \end{itemize}
-  \end{columns}
+\begin{frame}{Gelernt: Mobile-first testen}
+  \framesubtitle{Ein Fehlerfall beim Datei- und Bild-Upload}
+  \centering
+  \begin{tikzpicture}[
+    vergleich/.style={
+      draw=Linie, fill=Flaeche, rounded corners=4pt, line width=0.8pt,
+      text width=3.6cm, minimum height=1.55cm, align=center,
+      inner sep=8pt
+    },
+    fluss/.style={draw=Akzent, line width=1.3pt, -stealth}
+  ]
+    \node[vergleich] (pc) at (0,0) {
+      {\large\bfseries\color{Akzent}Am PC}\\[0.2cm]
+      Datei-/Bild-Upload funktionierte
+    };
+    \node[vergleich] (android) at (5.8,0) {
+      {\large\bfseries\color{Akzent}Android-Smartphone}\\[0.2cm]
+      Datei-/Bild-Upload funktionierte nicht
+    };
+    \draw[fluss] (pc) -- (android);
+  \end{tikzpicture}
+
+  \vspace{0.7cm}
+  {\Large\bfseries Mobile-first heißt: früh auf echten Geräten testen.}
+
+  \vspace{0.2cm}
+  {\small Der Fehler fiel erst später auf und musste anschließend behoben werden.}
 \end{frame}
 
 \begin{frame}[plain]
