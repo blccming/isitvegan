@@ -3,7 +3,6 @@
 \usepackage{fontspec}
 \usepackage[ngerman]{babel}
 \usepackage{graphicx}
-\usepackage{booktabs}
 \usepackage{microtype}
 \usepackage{hyperref}
 \usepackage{tikz}
@@ -12,27 +11,31 @@
 \setsansfont{Source Sans 3}
 \setmonofont{Source Code Pro}
 
-\definecolor{Tinte}{HTML}{1D2920}
-\definecolor{Akzent}{HTML}{C9783C}
-\definecolor{Papier}{HTML}{F7F6F1}
-\definecolor{Sekundaer}{HTML}{667067}
-\definecolor{Linie}{HTML}{D9DED7}
+\definecolor{Tinte}{HTML}{1C2416}
+\definecolor{Akzent}{HTML}{4D7027}
+\definecolor{Akzent2}{HTML}{638044}
+\definecolor{Papier}{HTML}{F5F7EF}
+\definecolor{Flaeche}{HTML}{EAF1DF}
+\definecolor{Sekundaer}{HTML}{53604B}
+\definecolor{Linie}{HTML}{B7C99B}
 
 \setbeamercolor{normal text}{fg=Tinte,bg=Papier}
 \setbeamercolor{frametitle}{fg=Tinte,bg=Papier}
+\setbeamercolor{block title}{fg=Akzent}
 \setbeamercolor{structure}{fg=Akzent}
 \setbeamercolor{alerted text}{fg=Akzent}
 \setbeamercolor{itemize item}{fg=Akzent}
-\setbeamercolor{itemize subitem}{fg=Sekundaer}
+\setbeamercolor{itemize subitem}{fg=Akzent2}
 \setbeamercolor{footline}{fg=Sekundaer,bg=Papier}
 \setbeamerfont{frametitle}{size=\Large,series=\bfseries}
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{itemize item}{\raisebox{0.15ex}{\rule{0.48em}{0.48em}}}
-\setbeamertemplate{itemize subitem}{\raisebox{0.2ex}{\rule{0.35em}{0.35em}}}
+\setbeamertemplate{itemize item}{\raisebox{0.1ex}{\color{Akzent}\normalsize\textbullet}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.1ex}{\color{Akzent2}\small\textbullet}}
 \setbeamertemplate{frametitle}{
-  \vspace{0.3em}
+  \vspace{0.2em}
   \insertframetitle\par
-  \vspace{0.35em}
+  {\small\color{Sekundaer}\insertframesubtitle}\par
+  \vspace{0.2em}
   {\color{Akzent}\rule{0.08\linewidth}{1.5pt}}
 }
 \setbeamertemplate{footline}{
@@ -58,19 +61,19 @@
 \begin{document}
 
 \begin{frame}[plain]
-  \vspace*{1.25cm}
+  \vspace*{1.1cm}
   {\color{Akzent}\small\bfseries WEB ENGINEERING 1 \hspace{0.5em}/\hspace{0.5em} PROJEKTPRÄSENTATION}
 
-  \vspace{0.8cm}
+  \vspace{0.75cm}
   {\Huge\bfseries Is it vegan?}
 
-  \vspace{0.3cm}
-  {\Large Produkt per EAN prüfen -- vom Barcode-Foto bis zur Einschätzung.}
+  \vspace{0.25cm}
+  {\Large Ein Produkt-Check für den Einkauf -- von der EAN zur Einschätzung.}
 
-  \vspace{1.1cm}
+  \vspace{1cm}
   {\color{Linie}\rule{\linewidth}{0.6pt}}
 
-  \vspace{0.55cm}
+  \vspace{0.5cm}
   \begin{columns}[T,onlytextwidth]
     \column{0.55\textwidth}
       \small Oliver Kühn\\
@@ -79,191 +82,172 @@
       \small\color{Sekundaer} Live-App\\
       \href{https://blccming.github.io/isitvegan/}{blccming.github.io/isitvegan}
   \end{columns}
+
 \end{frame}
 
-\begin{frame}{Was die App macht}
+\begin{frame}{Was ich gebaut habe}
+  \framesubtitle{Kurzüberblick}
   \begin{columns}[T,onlytextwidth]
-    \column{0.58\textwidth}
-      \includegraphics[width=\linewidth,height=0.52\textheight,keepaspectratio]{Screenshot.png}
-    \column{0.37\textwidth}
+    \column{0.55\textwidth}
+      \includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{Screenshot.png}
+    \column{0.4\textwidth}
       \vspace{0.15cm}
-      {\large\bfseries Orientierung beim Einkauf.}
-
-      \vspace{0.35cm}
-      \small
-      \begin{itemize}
-        \item EAN manuell eingeben oder Barcode-Foto hochladen.
-        \item Produktdaten und Vegan-Einschätzung anzeigen.
-        \item Geprüfte Produkte im Verlauf wiederfinden.
-      \end{itemize}
+      {\large\bfseries Produkt-Check im Browser}
 
       \vspace{0.2cm}
-      \color{Sekundaer}
-      Unklare Daten bleiben als \glqq Unklar\grqq{} gekennzeichnet.
+      \small
+      EAN und Produktname eingeben oder Barcode-Foto auswählen: Die App liest die Nummer und fragt Open Food Facts ab.
 
-      \vspace{0.35cm}
-      \color{Tinte}
-      \textbf{Live:} \href{https://blccming.github.io/isitvegan/}{blccming.github.io/isitvegan}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Vom Barcode zur Antwort}
-  \vspace{0.35cm}
-  \begin{columns}[T,onlytextwidth]
-    \column{0.23\textwidth}
-      {\color{Akzent}\Large\bfseries 01}\\[0.2cm]
-      {\large\bfseries Eingang}\\[0.12cm]
-      \small EAN eintippen oder ein Barcode-Foto auswählen.
-    \column{0.23\textwidth}
-      {\color{Akzent}\Large\bfseries 02}\\[0.2cm]
-      {\large\bfseries Erkennen}\\[0.12cm]
-      \small \texttt{@zxing/browser} liest die EAN aus dem Bild.
-    \column{0.23\textwidth}
-      {\color{Akzent}\Large\bfseries 03}\\[0.2cm]
-      {\large\bfseries Nachschlagen}\\[0.12cm]
-      \small Open Food Facts liefert Produktname und Analyse-Tags.
-    \column{0.23\textwidth}
-      {\color{Akzent}\Large\bfseries 04}\\[0.2cm]
-      {\large\bfseries Anzeigen}\\[0.12cm]
-      \small Status und Produkt landen in der History.
-  \end{columns}
-
-  \vspace{0.75cm}
-  {\color{Linie}\rule{\linewidth}{0.6pt}}
-
-  \vspace{0.45cm}
-  \begin{columns}[T,onlytextwidth]
-    \column{0.47\textwidth}
-      \textbf{Datenquelle}\\
-      \small Öffentliche API, kein API-Key; Aufruf direkt aus dem Browser (CORS).
-    \column{0.47\textwidth}
-      \textbf{Ergebnislogik}\\
-      \small \texttt{en:vegan}, \texttt{en:non-vegan} oder \glqq Unklar\grqq{}, wenn die Daten keine eindeutige Aussage erlauben.
+      \vspace{0.2cm}
+      \begin{itemize}
+        \item Status: vegan, nicht vegan oder unklar.
+        \item Verlauf bleibt nach dem Neuladen erhalten.
+        \item Bei Datenlücken: „Unklar“ statt raten.
+      \end{itemize}
   \end{columns}
 \end{frame}
 
 \begin{frame}{Code und Architektur}
-  \begin{columns}[T,onlytextwidth]
-    \column{0.46\textwidth}
-      \begin{tikzpicture}
-        \draw[draw=Linie,line width=0.8pt] (0.28,-0.35) -- (0.28,-3.55);
-        \draw[draw=Linie,line width=0.8pt] (0.28,-0.75) -- (0.62,-0.75);
-        \draw[draw=Linie,line width=0.8pt] (0.28,-1.3) -- (0.62,-1.3);
-        \draw[draw=Linie,line width=0.8pt] (0.28,-1.85) -- (0.62,-1.85);
-        \draw[draw=Linie,line width=0.8pt] (0.28,-2.4) -- (0.62,-2.4);
-        \draw[draw=Linie,line width=0.8pt] (0.28,-2.95) -- (0.62,-2.95);
-        \draw[draw=Linie,line width=0.8pt] (0.28,-3.5) -- (0.62,-3.5);
+  \framesubtitle{Datenfluss, Zuständigkeiten und Entscheidungen}
+  \centering
+  \begin{tikzpicture}[
+    box/.style={
+      draw=Linie, fill=Flaeche, rounded corners=3pt, line width=0.8pt,
+      text width=2.6cm, minimum height=1.05cm, align=center,
+      inner sep=5pt, font=\small
+    },
+    pfeil/.style={draw=Akzent, line width=1.2pt, -stealth}
+  ]
+    \node[box] (manuell) at (0,0) {\textbf{Manuell}\\EAN eintippen};
+    \node[box] (foto) at (0,-1.4) {\textbf{Foto-Scan}\\ZXing liest die EAN};
+    \node[box] (daten) at (3.5,-0.7) {\textbf{Produktdaten}\\Cache oder Open Food Facts};
+    \node[box] (ergebnis) at (6.8,-0.7) {\textbf{Ergebnis}\\Status und Verlauf};
+    \draw[pfeil] (manuell.east) -- (daten.west);
+    \draw[pfeil] (foto.east) -- (daten.west);
+    \draw[pfeil] (daten) -- (ergebnis);
+  \end{tikzpicture}
 
-        \node[anchor=west,font=\small\ttfamily\bfseries,text=Akzent] at (0,0) {isitvegan/};
-        \node[anchor=west,font=\small\ttfamily,text=Tinte] at (0.7,-0.75) {index.html};
-        \node[anchor=west,font=\small\ttfamily,text=Tinte] at (0.7,-1.3) {app.js};
-        \node[anchor=west,font=\small\ttfamily,text=Tinte] at (0.7,-1.85) {style.css};
-        \node[anchor=west,font=\small\ttfamily,text=Tinte] at (0.7,-2.4) {vite.config.js};
-        \node[anchor=west,font=\scriptsize\ttfamily,text=Tinte] at (0.7,-2.95) {.github/workflows/deploy.yml};
-        \node[anchor=west,font=\small\ttfamily,text=Sekundaer] at (0.7,-3.5) {dist/ \textnormal{(Build-Ausgabe)}};
-      \end{tikzpicture}
-    \column{0.42\textwidth}
-      \vspace{0.05cm}
-      {\large\bfseries Zustand im Browser}
+  \vspace{-0.2cm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.47\textwidth}
+      {\large\bfseries Im Projekt}
       \small
       \begin{itemize}
-        \item History bleibt in \texttt{localStorage} erhalten.
-        \item API-Ergebnisse werden je EAN 60 Sekunden gecacht.
-        \item Vier klare UI-Zustände: Laden, Ergebnis, nicht gefunden, Fehler.
+        \item HTML/CSS: Oberfläche; \texttt{app.js}: Formular, API und Zustand.
+        \item Vite \(\rightarrow\) \texttt{dist/} \(\rightarrow\) GitHub Actions \(\rightarrow\) Pages.
       \end{itemize}
-
-      \vspace{0.2cm}
-      {\large\bfseries Auslieferung}
+    \column{0.47\textwidth}
+      {\large\bfseries Bewusste Entscheidungen}
+      \small
       \begin{itemize}
-        \item Vite baut nach \texttt{dist/}.
-        \item GitHub Actions lädt das Artefakt hoch und deployt Pages.
+        \item Nur Tags \texttt{en:vegan}/\texttt{en:non-vegan} sind eindeutig, sonst „Unklar“.
+        \item Verlauf in \texttt{localStorage}; API-Cache pro EAN. Öffentliche API direkt im Browser.
       \end{itemize}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Vorgehen: Schritt für Schritt}
-  \begin{columns}[T,onlytextwidth]
-    \column{0.25\textwidth}
-      {\color{Akzent}\bfseries ZUERST}\\[0.25cm]
-      Formular und Ergebnisanzeige\\
-      \small EAN-Eingabe, Validierung und Verlauf.
-    \column{0.25\textwidth}
-      {\color{Akzent}\bfseries DANN}\\[0.25cm]
-      Zustand und Persistenz\\
-      \small Filtern, History und \texttt{localStorage}.
-    \column{0.25\textwidth}
-      {\color{Akzent}\bfseries DANACH}\\[0.25cm]
-      Echte Produktdaten\\
-      \small API, Fehlerzustände, Bild-Erkennung und Cache.
-    \column{0.2\textwidth}
-      {\color{Akzent}\bfseries ZULETZT}\\[0.25cm]
-      Deployment\\
-      \small Build- und Pages-Workflow prüfen.
-  \end{columns}
-
-  \vspace{0.9cm}
-  {\color{Linie}\rule{\linewidth}{0.6pt}}
-
-  \vspace{0.5cm}
-  \small
-  Der Commit-Verlauf zeigt dieselbe Entwicklung: von der Formulareingabe und History über API-Anbindung und ZXing bis zu Cache und Deployment-Fix. Jede Funktion wurde schrittweise ergänzt, statt die App auf einmal umzubauen.
+\begin{frame}{Vorgehen: vom Grundgerüst zum Live-Check}
+  \framesubtitle{Sechs Ausbaustufen}
+  \centering
+  \begin{tikzpicture}[
+    schritt/.style={
+      draw=Linie, fill=Flaeche, rounded corners=4pt, line width=0.8pt,
+      text width=3cm, minimum height=1.25cm, align=center,
+      inner sep=7pt, font=\small
+    },
+    fluss/.style={draw=Akzent, line width=1.3pt, -stealth}
+  ]
+    \node[schritt] (start) at (0,0) {
+      \textcolor{Akzent}{\textbf{30.09 \textperiodcentered{} Start}}\\
+      HTML-Grundgerüst\\+ Vorlage
+    };
+    \node[schritt] (idee) at (4,0) {
+      \textcolor{Akzent}{\textbf{14.10 \textperiodcentered{} Oberfläche}}\\
+      Single-Page\\Formular + Layout\\SEO/Metadaten
+    };
+    \node[schritt] (stack) at (8,0) {
+      \textcolor{Akzent}{\textbf{21.–27.10 \textperiodcentered{} Design}}\\
+      Responsive Layout\\Tailwind + Pages
+    };
+    \node[schritt] (interaktion) at (8,-2.2) {
+      \textcolor{Akzent}{\textbf{19.11 \textperiodcentered{} Interaktion}}\\
+      Ergebnis + Verlauf\\localStorage + Sicherheits-Check
+    };
+    \node[schritt] (daten) at (4,-2.2) {
+      \textcolor{Akzent}{\textbf{24.11 \textperiodcentered{} API + Scan}}\\
+      Open Food Facts\\ZXing + Cache
+    };
+    \node[schritt] (live) at (0,-2.2) {
+      \textcolor{Akzent}{\textbf{24.11 \textperiodcentered{} Live-Fix}}\\
+      Pages-Pfad korrigiert\\Live-Version geprüft
+    };
+    \draw[fluss] (start) -- (idee);
+    \draw[fluss] (idee) -- (stack);
+    \draw[fluss] (stack.south) -- (interaktion.north);
+    \draw[fluss] (interaktion.west) -- (daten.east);
+    \draw[fluss] (daten.west) -- (live.east);
+  \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{KI im Projekt}
+  \framesubtitle{Werkzeuge, Einsatz und eigene Prüfung}
   \begin{columns}[T,onlytextwidth]
     \column{0.47\textwidth}
-      {\large\bfseries Wobei sie half}
+      {\large\bfseries Wo KI geholfen hat}
+      \small
       \begin{itemize}
-        \item Copilot: Projektideen, Single-Page-Umstellung, responsive Tailwind-Ansicht und Metadaten.
-        \item Claude Code: Formular ohne Reload, Zustand, History und Filter.
+        \item Copilot half bei Ideen, Tailwind-Umsetzung, API/ZXing und Deployment.
+        \item Claude Code unterstützte Formular ohne Reload, Zustandsobjekt und gefilterten Verlauf.
         \item Beispielprompt: \glqq Generiere mir 5 Projektideen für eine Webapp, die den Alltag erleichtern.\grqq{}
       \end{itemize}
     \column{0.47\textwidth}
-      {\large\bfseries Was geprüft werden musste}
+      {\large\bfseries Was ich selbst prüfen musste}
+      \small
       \begin{itemize}
-        \item Ein erster Verlaufsentwurf nutzte eigenes CSS statt des vorhandenen Tailwind-Ansatzes.
-        \item Die Umsetzung wurde angepasst und mit echtem API-Verhalten abgeglichen.
-        \item KI beschleunigt Entwürfe -- Architektur und Ergebnisse müssen trotzdem geprüft werden.
+        \item Ein erster Verlaufsentwurf nutzte eigenes CSS statt des Tailwind-Ansatzes im Projekt.
+        \item Ich habe die Umsetzung angepasst und mit API-Antworten sowie der Live-Seite abgeglichen.
+        \item KI lieferte Vorschläge und beschleunigte Umsetzung; Entscheidungen und Ergebnis blieben bei mir.
       \end{itemize}
   \end{columns}
 \end{frame}
 
 \begin{frame}{Was ich mitnehme}
+  \framesubtitle{Erkenntnisse und nächster Schritt}
   \begin{columns}[T,onlytextwidth]
     \column{0.47\textwidth}
       {\large\bfseries Gelernt}
       \begin{itemize}
-        \item Öffentliche Produktdaten sind nicht immer vollständig oder eindeutig.
-        \item Ein unbekannter Status ist ehrlicher als eine falsche Ja/Nein-Aussage.
-        \item Bibliotheken und KI-Ausgaben müssen zum vorhandenen Stack passen.
+        \item Eine API kann Daten liefern, aber keine verlässliche Aussage: fehlende Analyse-Tags bedeuten „Unklar“.
+        \item EAN-Eingabe, Foto-Scan, API-Fehler und Deployment sind Teil derselben Nutzerreise.
+        \item Browser-Speicher braucht Datenprüfung und Versionswechsel, nicht nur ein \texttt{setItem}.
       \end{itemize}
     \column{0.47\textwidth}
       {\large\bfseries Beim nächsten Projekt}
       \begin{itemize}
-        \item API-Antworten und Sonderfälle früher als Testfälle festhalten.
-        \item Einen echten Foto-Scan schon beim ersten Prototyp ausprobieren.
-        \item Zuständigkeiten für API, UI und Persistenz früher trennen.
+        \item API-Antworten und Grenzfälle von Anfang an als Testfälle festhalten.
+        \item Foto-Scan früher auf echten Mobilgeräten ausprobieren.
+        \item Zuständigkeiten für Oberfläche, Datenzugriff und Speicherung früher trennen.
       \end{itemize}
   \end{columns}
 \end{frame}
 
 \begin{frame}[plain]
-  \vspace*{1.3cm}
-  {\color{Akzent}\small\bfseries FRAGEN}
+  \vspace*{1.1cm}
+  {\color{Akzent}\small\bfseries RÜCKFRAGEN}
 
   \vspace{0.5cm}
   {\Huge\bfseries Danke.}
 
-  \vspace{0.35cm}
+  \vspace{0.3cm}
   {\Large Was möchtet ihr wissen?}
 
-  \vspace{1.1cm}
+  \vspace{1cm}
   {\color{Linie}\rule{\linewidth}{0.6pt}}
 
   \vspace{0.5cm}
   \small
   Live-App: \href{https://blccming.github.io/isitvegan/}{blccming.github.io/isitvegan}\\
-  Projekt: \href{https://github.com/blccming/isitvegan}{github.com/blccming/isitvegan}
+  Code und Commit-Historie: \href{https://github.com/blccming/isitvegan}{github.com/blccming/isitvegan}
 \end{frame}
 
 \end{document}
