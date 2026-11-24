@@ -135,6 +135,9 @@ Ehrlich ausfüllen, das zählt zur Bewertung.
 | Copilot  | Erstellung des JSON-LD-Blocks nach Schema.org und Ergänzung der Angaben zu Beschreibung, Lizenz und Creator. |
 | Copilot  | Unterstützung bei der responsiven Umsetzung mit Flexbox, Grid und Tailwind. |
 | Copilot  | Unterstützung bei der Vite- und Tailwind-Toolchain sowie der README-Dokumentation. |
+| Copilot  | Open-Food-Facts-Abfrage mit Fehlerbehandlung und 60-Sekunden-Cache, ZXing-Bildscan sowie History-Anzeige mit eingegebenem und API-Produktnamen. |
+| Copilot  | Fehlersuche im GitHub-Pages-Deployment und Trennung des Workflows in Build- und Deploy-Jobs. |
+| Copilot  | Erstellung der 16:9-LaTeX-Präsentation samt Ordnerstruktur-Grafik, Kompilierung mit TeX Live und Aktualisierung des Screenshots. |
 | Claude Code | Formular ohne Reload (`submit`/`preventDefault`), Zustandsobjekt mit einer `zeichne()`-Funktion, Verlaufsliste mit Filter und Trefferzähler sowie vegan-Platzhalter-Badge. |
 
 **Ein Fall, in dem KI geholfen hat:** Die KI ist unfassbar schnell in Frontend-Design und hat es mir erlaubt, durch reines Beschreiben meiner Designidee die Umsetzung in Tailwind zu erhalten. Das ging deutlich schneller und einfacher, als es selbst zu schreiben und erlaubte mir, das Ergebnis meiner Designidee direkt zu sehen und zu bewerten.

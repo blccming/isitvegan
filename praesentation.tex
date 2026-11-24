@@ -1,0 +1,269 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usepackage{fontspec}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\setsansfont{Source Sans 3}
+\setmonofont{Source Code Pro}
+
+\definecolor{Tinte}{HTML}{1D2920}
+\definecolor{Akzent}{HTML}{C9783C}
+\definecolor{Papier}{HTML}{F7F6F1}
+\definecolor{Sekundaer}{HTML}{667067}
+\definecolor{Linie}{HTML}{D9DED7}
+
+\setbeamercolor{normal text}{fg=Tinte,bg=Papier}
+\setbeamercolor{frametitle}{fg=Tinte,bg=Papier}
+\setbeamercolor{structure}{fg=Akzent}
+\setbeamercolor{alerted text}{fg=Akzent}
+\setbeamercolor{itemize item}{fg=Akzent}
+\setbeamercolor{itemize subitem}{fg=Sekundaer}
+\setbeamercolor{footline}{fg=Sekundaer,bg=Papier}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\raisebox{0.15ex}{\rule{0.48em}{0.48em}}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.2ex}{\rule{0.35em}{0.35em}}}
+\setbeamertemplate{frametitle}{
+  \vspace{0.3em}
+  \insertframetitle\par
+  \vspace{0.35em}
+  {\color{Akzent}\rule{0.08\linewidth}{1.5pt}}
+}
+\setbeamertemplate{footline}{
+  \leavevmode
+  \hbox to \paperwidth{
+    \hspace{1.2em}\color{Sekundaer}\scriptsize Is it vegan? \hspace{0.6em} Web Engineering 1
+    \hfill
+    \color{Sekundaer}\scriptsize \insertframenumber/\inserttotalframenumber\hspace{1.2em}
+  }
+  \vskip 0.5em
+}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=Akzent,
+  linkcolor=Tinte
+}
+
+\title{Is it vegan?}
+\author{Oliver Kühn}
+\institute{Web Engineering 1 \textperiodcentered{} DHBW Karlsruhe}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \vspace*{1.25cm}
+  {\color{Akzent}\small\bfseries WEB ENGINEERING 1 \hspace{0.5em}/\hspace{0.5em} PROJEKTPRÄSENTATION}
+
+  \vspace{0.8cm}
+  {\Huge\bfseries Is it vegan?}
+
+  \vspace{0.3cm}
+  {\Large Produkt per EAN prüfen -- vom Barcode-Foto bis zur Einschätzung.}
+
+  \vspace{1.1cm}
+  {\color{Linie}\rule{\linewidth}{0.6pt}}
+
+  \vspace{0.55cm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.55\textwidth}
+      \small Oliver Kühn\\
+      DHBW Karlsruhe
+    \column{0.45\textwidth}
+      \small\color{Sekundaer} Live-App\\
+      \href{https://blccming.github.io/isitvegan/}{blccming.github.io/isitvegan}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Was die App macht}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.58\textwidth}
+      \includegraphics[width=\linewidth,height=0.52\textheight,keepaspectratio]{Screenshot.png}
+    \column{0.37\textwidth}
+      \vspace{0.15cm}
+      {\large\bfseries Orientierung beim Einkauf.}
+
+      \vspace{0.35cm}
+      \small
+      \begin{itemize}
+        \item EAN manuell eingeben oder Barcode-Foto hochladen.
+        \item Produktdaten und Vegan-Einschätzung anzeigen.
+        \item Geprüfte Produkte im Verlauf wiederfinden.
+      \end{itemize}
+
+      \vspace{0.2cm}
+      \color{Sekundaer}
+      Unklare Daten bleiben als \glqq Unklar\grqq{} gekennzeichnet.
+
+      \vspace{0.35cm}
+      \color{Tinte}
+      \textbf{Live:} \href{https://blccming.github.io/isitvegan/}{blccming.github.io/isitvegan}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Vom Barcode zur Antwort}
+  \vspace{0.35cm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.23\textwidth}
+      {\color{Akzent}\Large\bfseries 01}\\[0.2cm]
+      {\large\bfseries Eingang}\\[0.12cm]
+      \small EAN eintippen oder ein Barcode-Foto auswählen.
+    \column{0.23\textwidth}
+      {\color{Akzent}\Large\bfseries 02}\\[0.2cm]
+      {\large\bfseries Erkennen}\\[0.12cm]
+      \small \texttt{@zxing/browser} liest die EAN aus dem Bild.
+    \column{0.23\textwidth}
+      {\color{Akzent}\Large\bfseries 03}\\[0.2cm]
+      {\large\bfseries Nachschlagen}\\[0.12cm]
+      \small Open Food Facts liefert Produktname und Analyse-Tags.
+    \column{0.23\textwidth}
+      {\color{Akzent}\Large\bfseries 04}\\[0.2cm]
+      {\large\bfseries Anzeigen}\\[0.12cm]
+      \small Status und Produkt landen in der History.
+  \end{columns}
+
+  \vspace{0.75cm}
+  {\color{Linie}\rule{\linewidth}{0.6pt}}
+
+  \vspace{0.45cm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.47\textwidth}
+      \textbf{Datenquelle}\\
+      \small Öffentliche API, kein API-Key; Aufruf direkt aus dem Browser (CORS).
+    \column{0.47\textwidth}
+      \textbf{Ergebnislogik}\\
+      \small \texttt{en:vegan}, \texttt{en:non-vegan} oder \glqq Unklar\grqq{}, wenn die Daten keine eindeutige Aussage erlauben.
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Code und Architektur}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.46\textwidth}
+      \begin{tikzpicture}
+        \draw[draw=Linie,line width=0.8pt] (0.28,-0.35) -- (0.28,-3.55);
+        \draw[draw=Linie,line width=0.8pt] (0.28,-0.75) -- (0.62,-0.75);
+        \draw[draw=Linie,line width=0.8pt] (0.28,-1.3) -- (0.62,-1.3);
+        \draw[draw=Linie,line width=0.8pt] (0.28,-1.85) -- (0.62,-1.85);
+        \draw[draw=Linie,line width=0.8pt] (0.28,-2.4) -- (0.62,-2.4);
+        \draw[draw=Linie,line width=0.8pt] (0.28,-2.95) -- (0.62,-2.95);
+        \draw[draw=Linie,line width=0.8pt] (0.28,-3.5) -- (0.62,-3.5);
+
+        \node[anchor=west,font=\small\ttfamily\bfseries,text=Akzent] at (0,0) {isitvegan/};
+        \node[anchor=west,font=\small\ttfamily,text=Tinte] at (0.7,-0.75) {index.html};
+        \node[anchor=west,font=\small\ttfamily,text=Tinte] at (0.7,-1.3) {app.js};
+        \node[anchor=west,font=\small\ttfamily,text=Tinte] at (0.7,-1.85) {style.css};
+        \node[anchor=west,font=\small\ttfamily,text=Tinte] at (0.7,-2.4) {vite.config.js};
+        \node[anchor=west,font=\scriptsize\ttfamily,text=Tinte] at (0.7,-2.95) {.github/workflows/deploy.yml};
+        \node[anchor=west,font=\small\ttfamily,text=Sekundaer] at (0.7,-3.5) {dist/ \textnormal{(Build-Ausgabe)}};
+      \end{tikzpicture}
+    \column{0.42\textwidth}
+      \vspace{0.05cm}
+      {\large\bfseries Zustand im Browser}
+      \small
+      \begin{itemize}
+        \item History bleibt in \texttt{localStorage} erhalten.
+        \item API-Ergebnisse werden je EAN 60 Sekunden gecacht.
+        \item Vier klare UI-Zustände: Laden, Ergebnis, nicht gefunden, Fehler.
+      \end{itemize}
+
+      \vspace{0.2cm}
+      {\large\bfseries Auslieferung}
+      \begin{itemize}
+        \item Vite baut nach \texttt{dist/}.
+        \item GitHub Actions lädt das Artefakt hoch und deployt Pages.
+      \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Vorgehen: Schritt für Schritt}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.25\textwidth}
+      {\color{Akzent}\bfseries ZUERST}\\[0.25cm]
+      Formular und Ergebnisanzeige\\
+      \small EAN-Eingabe, Validierung und Verlauf.
+    \column{0.25\textwidth}
+      {\color{Akzent}\bfseries DANN}\\[0.25cm]
+      Zustand und Persistenz\\
+      \small Filtern, History und \texttt{localStorage}.
+    \column{0.25\textwidth}
+      {\color{Akzent}\bfseries DANACH}\\[0.25cm]
+      Echte Produktdaten\\
+      \small API, Fehlerzustände, Bild-Erkennung und Cache.
+    \column{0.2\textwidth}
+      {\color{Akzent}\bfseries ZULETZT}\\[0.25cm]
+      Deployment\\
+      \small Build- und Pages-Workflow prüfen.
+  \end{columns}
+
+  \vspace{0.9cm}
+  {\color{Linie}\rule{\linewidth}{0.6pt}}
+
+  \vspace{0.5cm}
+  \small
+  Der Commit-Verlauf zeigt dieselbe Entwicklung: von der Formulareingabe und History über API-Anbindung und ZXing bis zu Cache und Deployment-Fix. Jede Funktion wurde schrittweise ergänzt, statt die App auf einmal umzubauen.
+\end{frame}
+
+\begin{frame}{KI im Projekt}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.47\textwidth}
+      {\large\bfseries Wobei sie half}
+      \begin{itemize}
+        \item Copilot: Projektideen, Single-Page-Umstellung, responsive Tailwind-Ansicht und Metadaten.
+        \item Claude Code: Formular ohne Reload, Zustand, History und Filter.
+        \item Beispielprompt: \glqq Generiere mir 5 Projektideen für eine Webapp, die den Alltag erleichtern.\grqq{}
+      \end{itemize}
+    \column{0.47\textwidth}
+      {\large\bfseries Was geprüft werden musste}
+      \begin{itemize}
+        \item Ein erster Verlaufsentwurf nutzte eigenes CSS statt des vorhandenen Tailwind-Ansatzes.
+        \item Die Umsetzung wurde angepasst und mit echtem API-Verhalten abgeglichen.
+        \item KI beschleunigt Entwürfe -- Architektur und Ergebnisse müssen trotzdem geprüft werden.
+      \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Was ich mitnehme}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.47\textwidth}
+      {\large\bfseries Gelernt}
+      \begin{itemize}
+        \item Öffentliche Produktdaten sind nicht immer vollständig oder eindeutig.
+        \item Ein unbekannter Status ist ehrlicher als eine falsche Ja/Nein-Aussage.
+        \item Bibliotheken und KI-Ausgaben müssen zum vorhandenen Stack passen.
+      \end{itemize}
+    \column{0.47\textwidth}
+      {\large\bfseries Beim nächsten Projekt}
+      \begin{itemize}
+        \item API-Antworten und Sonderfälle früher als Testfälle festhalten.
+        \item Einen echten Foto-Scan schon beim ersten Prototyp ausprobieren.
+        \item Zuständigkeiten für API, UI und Persistenz früher trennen.
+      \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+  \vspace*{1.3cm}
+  {\color{Akzent}\small\bfseries FRAGEN}
+
+  \vspace{0.5cm}
+  {\Huge\bfseries Danke.}
+
+  \vspace{0.35cm}
+  {\Large Was möchtet ihr wissen?}
+
+  \vspace{1.1cm}
+  {\color{Linie}\rule{\linewidth}{0.6pt}}
+
+  \vspace{0.5cm}
+  \small
+  Live-App: \href{https://blccming.github.io/isitvegan/}{blccming.github.io/isitvegan}\\
+  Projekt: \href{https://github.com/blccming/isitvegan}{github.com/blccming/isitvegan}
+\end{frame}
+
+\end{document}
