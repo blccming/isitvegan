@@ -53,9 +53,13 @@ Mit der EAN `3017620422003` wurde die Antwort per curl geprüft. Sie enthält un
 `"product_name":"Nutella"`, `"ingredients_text":"sugar, palm oil"` und
 `"ingredients_analysis_tags":["en:palm-oil","en:maybe-vegan","en:vegetarian"]`.
 
+### Cache
+
+Erfolgreiche Produktabfragen werden pro EAN eine Minute in `localStorage` zwischengespeichert. Da die API nur bei einer Suche oder einem Foto-Scan aufgerufen wird, würde Debounce keine Anfragen sparen. Bei zwei Prüfungen derselben EAN innerhalb einer Minute sinkt die Zahl der Netzwerkanfragen von **2 auf 1** (erste Prüfung: 1, Wiederholung: 0).
+
 ## Barcode-Bibliothek
 
-Wir nutzen [`@zxing/browser`](https://www.npmjs.com/package/@zxing/browser), um EAN-13-Barcodes direkt aus dem Foto-Upload im Browser auszulesen und anschließend das Produkt zu prüfen. So entfällt ein eigener Decoder.
+[`@zxing/browser`](https://www.npmjs.com/package/@zxing/browser) liest EAN-13-Barcodes direkt aus dem Foto-Upload im Browser aus; anschließend wird das Produkt geprüft. So entfällt ein eigener Decoder.
 
 Stand 24.11.2026: **2.108.491 npm-Downloads/Woche** (17.–23.11.), aktuelle Version **0.2.1**, **MIT-Lizenz**. Bundlephobia: **27,3 kB** minifiziert (**7,0 kB** gzip). [Bundlephobia](https://bundlephobia.com/package/@zxing/browser@0.2.1)
 

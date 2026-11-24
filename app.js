@@ -28,6 +28,8 @@ const barcodeLeser = new BrowserMultiFormatOneDReader();
 // Teil B (Bonus): Verlauf über den Reload hinweg in localStorage merken
 const SPEICHER_SCHLUESSEL = "isitvegan.verlauf";
 const SPEICHER_VERSION = 4;
+const API_CACHE_SCHLUESSEL = "isitvegan.openfoodfacts-cache";
+const API_CACHE_DAUER = 60_000;
 
 const neueId = () =>
   crypto.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
@@ -109,6 +111,62 @@ const speichereVerlauf = (verlauf) => {
   }
 };
 
+const istGueltigerCacheEintrag = (eintrag) =>
+  eintrag !== null &&
+  typeof eintrag === "object" &&
+  Number.isFinite(eintrag.gueltigBis) &&
+  typeof eintrag.produktname === "string" &&
+  ["vegan", "nicht-vegan", "unklar"].includes(eintrag.veganStatus);
+
+const ladeApiCache = () => {
+  try {
+    const roh = localStorage.getItem(API_CACHE_SCHLUESSEL);
+    if (roh === null) return {};
+
+    const cache = JSON.parse(roh);
+    if (cache === null || typeof cache !== "object" || Array.isArray(cache)) {
+      throw new Error("Ungültiges Cache-Format.");
+    }
+    return cache;
+  } catch (error) {
+    console.warn("Open-Food-Facts-Cache konnte nicht gelesen werden.", error);
+    return {};
+  }
+};
+
+const schreibeApiCache = (cache) => {
+  try {
+    localStorage.setItem(API_CACHE_SCHLUESSEL, JSON.stringify(cache));
+  } catch (error) {
+    console.warn("Open-Food-Facts-Cache konnte nicht gespeichert werden.", error);
+  }
+};
+
+const holeApiCache = (ean) => {
+  const cache = ladeApiCache();
+  const eintrag = cache[ean];
+  if (!istGueltigerCacheEintrag(eintrag) || eintrag.gueltigBis <= Date.now()) {
+    if (eintrag !== undefined) {
+      delete cache[ean];
+      schreibeApiCache(cache);
+    }
+    return null;
+  }
+  return { produktname: eintrag.produktname, veganStatus: eintrag.veganStatus };
+};
+
+const speichereApiCache = (ean, produkt) => {
+  const cache = ladeApiCache();
+  const jetzt = Date.now();
+  for (const [gespeicherteEan, eintrag] of Object.entries(cache)) {
+    if (!istGueltigerCacheEintrag(eintrag) || eintrag.gueltigBis <= jetzt) {
+      delete cache[gespeicherteEan];
+    }
+  }
+  cache[ean] = { ...produkt, gueltigBis: jetzt + API_CACHE_DAUER };
+  schreibeApiCache(cache);
+};
+
 const zustand = {
   meldung: { text: "", istFehler: false },
   verlauf: ladeVerlauf(),
@@ -116,6 +174,9 @@ const zustand = {
 };
 
 const holeProdukt = async (ean) => {
+  const zwischengespeichert = holeApiCache(ean);
+  if (zwischengespeichert) return zwischengespeichert;
+
   const url = new URL(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(ean)}`);
   url.searchParams.set("fields", "product_name,ingredients_analysis_tags");
 
@@ -148,7 +209,9 @@ const holeProdukt = async (ean) => {
       ? "nicht-vegan"
       : "unklar";
 
-  return { produktname: daten.product.product_name, veganStatus };
+  const produkt = { produktname: daten.product.product_name ?? "", veganStatus };
+  speichereApiCache(ean, produkt);
+  return produkt;
 };
 
 const eintraegeWort = (anzahlEintraege) =>
