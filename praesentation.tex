@@ -120,29 +120,45 @@
   ]
     \node[box] (manuell) at (0,0) {\textbf{Manuell}\\EAN eintippen};
     \node[box] (foto) at (0,-1.4) {\textbf{Foto-Scan}\\ZXing liest die EAN};
-    \node[box] (daten) at (3.5,-0.7) {\textbf{Produktdaten}\\Cache oder Open Food Facts};
-    \node[box] (ergebnis) at (6.8,-0.7) {\textbf{Ergebnis}\\Status und Verlauf};
-    \draw[pfeil] (manuell.east) -- (daten.west);
-    \draw[pfeil] (foto.east) -- (daten.west);
-    \draw[pfeil] (daten) -- (ergebnis);
+    \node[box] (pruefen) at (3.5,-0.7) {\textbf{Validieren}\\\texttt{pruefeEan()}};
+    \node[box] (holen) at (7,-0.7) {\textbf{Produkt holen}\\{\scriptsize\texttt{holeProdukt()}}};
+    \node[box] (ergebnis) at (10.5,-0.7) {\textbf{Anzeigen}\\\texttt{zustand} \(\rightarrow\) UI};
+    \draw[pfeil] (manuell.east) -- (pruefen.west);
+    \draw[pfeil] (foto.east) -- (pruefen.west);
+    \draw[pfeil] (pruefen) -- (holen);
+    \draw[pfeil] (holen) -- (ergebnis);
   \end{tikzpicture}
 
-  \vspace{-0.2cm}
   \begin{columns}[T,onlytextwidth]
-    \column{0.47\textwidth}
-      {\large\bfseries Im Projekt}
-      \small
-      \begin{itemize}
-        \item HTML mit Tailwind: Oberfläche; \texttt{app.js}: Formular, API, Zustand.
-        \item Vite \(\rightarrow\) \texttt{dist/} \(\rightarrow\) GitHub Actions \(\rightarrow\) Pages.
-      \end{itemize}
-    \column{0.47\textwidth}
-      {\large\bfseries Bewusste Entscheidungen}
-      \small
-      \begin{itemize}
-        \item Nur Tags \texttt{en:vegan}/\texttt{en:non-vegan} sind eindeutig, sonst „Unklar“.
-        \item Verlauf in \texttt{localStorage}; API-Cache pro EAN. Öffentliche API direkt im Browser.
-      \end{itemize}
+    \column{0.34\textwidth}
+      {\large\bfseries Projektstruktur}
+      \vspace{0.12cm}
+
+      {\scriptsize\ttfamily
+      isitvegan/\\
+      \quad index.html \normalfont\textcolor{Sekundaer}{Seite}\\
+      \quad app.js \normalfont\textcolor{Sekundaer}{Logik + Zustand}\\
+      \quad style.css \normalfont\textcolor{Sekundaer}{Tailwind/CSS}\\
+      \quad vite.config.js\\
+      \quad .github/workflows/deploy.yml\\
+      \quad dist/ \normalfont\textcolor{Sekundaer}{Build-Ausgabe}}
+    \column{0.62\textwidth}
+      {\large\bfseries State \& Datenfluss}
+      \vspace{0.1cm}
+
+      {\scriptsize
+      Formular \(\rightarrow\) \texttt{pruefeEan()} \(\rightarrow\)
+      \texttt{holeProdukt()}\\
+      Cache-Treffer, sonst Open Food Facts (API)\\
+      Produktdaten zurück an \texttt{pruefeEan()}\\
+      \texttt{zustand} aktualisieren \(\rightarrow\) \texttt{zeichne()}
+      \(\rightarrow\) HTML (\texttt{\#status}, \texttt{\#verlauf})}
+
+      \vspace{0.12cm}
+      {\scriptsize
+      \texttt{zustand} (\texttt{meldung}, \texttt{verlauf}, \texttt{filter})
+      lebt im Arbeitsspeicher. Verlauf und API-Cache liegen zusätzlich im
+      \texttt{localStorage}.}
   \end{columns}
 \end{frame}
 
